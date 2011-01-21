@@ -33,7 +33,7 @@
                '(width . 132)
                '(height . 32)
                '(top . 350)
-               '(left . 1800)
+               '(left . 160)
                )
               default-frame-alist))
 
