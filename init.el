@@ -78,7 +78,7 @@
 (require 'init_key)
 
 ;; anything
-(require 'init_anything)
+;(require 'init_anything)
 
 ;; flymake
 (require 'init_flymake)
