@@ -48,13 +48,30 @@
                   ;; 初期設定ファイル
                   "site-start.d")
 
+;; Emacs の種類バージョンを判別するための変数を定義
+;; @see http://github.com/elim/dotemacs/blob/master/init.el
+(defun x->bool (elt) (not (not elt)))
+(defvar emacs23-p (equal emacs-major-version 23))
+(defvar ns-p (featurep 'ns))
+(defvar linux-p (eq system-type 'gnu/linux))
+(defvar nt-p (eq system-type 'windows-nt))
+
+
 ;; 文字コード
 ;;(set-language-environment 'Japanese)
 (set-language-environment  'utf-8)
 (prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8-unix)
-(setq file-name-coding-system 'utf-8)
-(setq locale-coding-system 'utf-8)
+
+(cond
+ (nt-p
+  (set-default-coding-systems 'utf-8-dos)
+  (setq file-name-coding-system 'sjis
+        locale-coding-system 'utf-8))
+ (t
+  (set-default-coding-systems 'utf-8-unix)
+  (setq file-name-coding-system 'utf-8
+        locale-coding-system 'utf-8)))
+
 
 ;; 全環境共通設定
 (require 'init_global)
