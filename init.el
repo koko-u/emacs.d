@@ -112,6 +112,8 @@
 ;; javascript
 (require 'init_javascript)
 
+;; hatna-diary-mode
+(require 'init_hatena)
 
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
