@@ -36,13 +36,13 @@
              ;(c-set-style "ellemtel")
              (c-set-style "cc-mode")
              ; 基本オフセット
-             ;(c-basic-offset . 4)
+             (c-basic-offset . 2)
              ; コメント行のオフセット
              ;(c-comment-only-line-of . 0)
              ; 全自動インデントを有効
-             ;(c-auto-newline t)
+             (c-auto-newline t)
              ; TABキーでインデント
-             ;(c-tab-always-indent t)
+            ;(c-tab-always-indent t)
              ; namespace {}の中はインデントしない
              (c-set-offset 'innamespace 0)
              ; 連続するスペースをバックスペース一回で削除する

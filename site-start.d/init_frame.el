@@ -30,10 +30,10 @@
 ;; デフォルトのフレーム設定
 (setq default-frame-alist
       (append (list
-               '(width . 132)
-               '(height . 32)
-               '(top . 350)
-               '(left . 160)
+               '(width . 65)
+               '(height . 40)
+               '(top . 10)
+               '(left . 10)
                )
               default-frame-alist))
 
@@ -42,7 +42,7 @@
 
 ;; 背景の透過
 ;; (add-to-list 'default-frame-alist '(alpha . (85 20)))
-(add-to-list 'default-frame-alist '(alpha . (92 70)))
+;(add-to-list 'default-frame-alist '(alpha . (92 70)))
 
 ;;; フォントの設定
 (set-frame-font (cond

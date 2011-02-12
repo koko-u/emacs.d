@@ -82,8 +82,8 @@
 ;; リージョンを kill-ring に入れないで削除できるようにする
 (delete-selection-mode t)
 
-;; TAB はスペース 4 個ぶんを基本
-(setq-default tab-width 4)
+;; TAB はスペース 2 個ぶんを基本
+(setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
 ;; 対応するカッコを色表示する
