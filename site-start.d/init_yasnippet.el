@@ -55,5 +55,9 @@
 ;; 複数ディレクトリの場合
 ;;(mapc 'yas/load-directory yas/root-directory)
 
+;; prompting-mode の設定
+(setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt yas/completing-prompt))
+ 
+
 (provide 'init_yasnippet)
 ;;; init_yasnippet.el ends here
