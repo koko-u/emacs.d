@@ -46,7 +46,7 @@ and source-file directory for your debugger" t)
 
 
 (require 'ruby-electric)
-;(require 'ruby-block)
+(require 'ruby-block)
 
 ;; setting for rails
 (require 'ido)
