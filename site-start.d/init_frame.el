@@ -99,10 +99,10 @@
 (setq transient-mark-mode t)
 
 ;; 変更点に色付け
-(global-highlight-changes-mode t)
-(setq highlight-changes-visibility-initial-state t)
-(global-set-key (kbd "M-]") 'highlight-changes-next-change)
-(global-set-key (kbd "M-[")  'highlight-changes-previous-change)
+;(global-highlight-changes-mode t)
+;(setq highlight-changes-visibility-initial-state t)
+;(global-set-key (kbd "M-]") 'highlight-changes-next-change)
+;(global-set-key (kbd "M-[")  'highlight-changes-previous-change)
 
 ;; 現在行に色を付ける
 (global-hl-line-mode)
