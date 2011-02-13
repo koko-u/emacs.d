@@ -85,6 +85,9 @@
 ;; TAB はスペース 2 個ぶんを基本
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
+(add-hook 'css-mode-hook
+          '(lambda ()
+             (setq css-indent-offset 2)))
 
 ;; 対応するカッコを色表示する
 ;; 特に色をつけなくてもC-M-p、C-M-n を利用すれば対応するカッコ等に移動できる
