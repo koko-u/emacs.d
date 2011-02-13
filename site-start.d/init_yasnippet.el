@@ -44,9 +44,9 @@
 ;; (setq yas/next-field-key (kbd "TAB"))
 
 ;; http://svn.coderepos.org/share/lang/elisp/anything-c-yasnippet/anything-c-yasnippet.el
-(require 'anything-c-yasnippet)
-(setq anything-c-yas-space-match-any-greedy t)
-(global-set-key (kbd "C-c y") 'anything-c-yas-complete)
+;(require 'anything-c-yasnippet)
+;(setq anything-c-yas-space-match-any-greedy t)
+;(global-set-key (kbd "C-c y") 'anything-c-yas-complete)
 
 ;; 初期化
 (yas/initialize)

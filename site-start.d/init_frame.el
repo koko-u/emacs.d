@@ -44,12 +44,12 @@
 ;; (add-to-list 'default-frame-alist '(alpha . (85 20)))
 ;(add-to-list 'default-frame-alist '(alpha . (92 70)))
 
-;;; フォントの設定
-(set-frame-font (cond
-                 (nt-p
-                  "ＭＳ ゴシック-10")
-                 (t
-                  "VL Gothic-14")))
+;;; フォントの設定 -> わかんないので保留
+;(set-frame-font (cond
+;                 (nt-p
+;                  "ＭＳ ゴシック-10")
+;                 (t
+;                  "VL Gothic-14")))
 
 ;; フォントロックの設定
 (when (fboundp 'global-font-lock-mode)
