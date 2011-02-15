@@ -36,11 +36,11 @@
              ;(c-set-style "ellemtel")
              (c-set-style "cc-mode")
              ; 基本オフセット
-             (c-basic-offset . 2)
+             (setq c-basic-offset 2)
              ; コメント行のオフセット
              ;(c-comment-only-line-of . 0)
              ; 全自動インデントを有効
-             (c-auto-newline t)
+             (setq c-auto-newline t)
              ; TABキーでインデント
             ;(c-tab-always-indent t)
              ; namespace {}の中はインデントしない
