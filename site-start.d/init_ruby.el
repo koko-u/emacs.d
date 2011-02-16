@@ -60,7 +60,7 @@ and source-file directory for your debugger" t)
       nxhtml-skip-welcom t
       rng-nxml-auto-validate-flag nil
       nxml-degraded t)
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
 ;; setting for RSpec
 (require 'compile)
