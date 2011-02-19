@@ -60,7 +60,7 @@
 
 ; 自動改行関連
 (setq-default auto-fill-mode nil)
-(setq-default fill-column 300)
+(setq-default fill-column 80)
 (setq text-mode-hook 'turn-off-auto-fill)
 
 ; 削除ファイルをOSのごみ箱へ
