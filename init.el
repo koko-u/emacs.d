@@ -126,6 +126,9 @@
 ;; hatena-diary-mode
 (require 'init_hatena)
 
+;; scala-mode
+(require 'init_scala)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()

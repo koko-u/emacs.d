@@ -31,6 +31,7 @@
 
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
+(setq uniquify-min-dir-content 1)
 
 (provide 'init_uniquify)
 ;;; init_uniquify.el ends here
