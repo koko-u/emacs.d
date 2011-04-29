@@ -27,6 +27,9 @@
 ;;; Code:
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files")
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (autoload 'run-ruby "inf-ruby" "Run and inferior Ruby process")
 (autoload 'info-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook
@@ -53,6 +56,7 @@ and source-file directory for your debugger" t)
 (ido-mode t)
 (require 'rinari)
 
+
 ;; setting for nXHTML
 (load "~/.emacs.d/lisp/nxhtml/autostart.el")
 (setq nxhtml-global-minor-mode t
@@ -61,10 +65,16 @@ and source-file directory for your debugger" t)
       rng-nxml-auto-validate-flag nil
       nxml-degraded t)
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
+;; html.erb ファイルにはマジックコメントを入れてほしくない
+(add-hook 'eruby-nxhtml-mumamo-mode-hook
+          '(lambda ()
+             (setq ruby-insert-encoding-magic-comment nil)))
 
 ;; setting for RSpec
 (require 'compile)
 (require 'rspec-mode)
+;; imenu-generic-expression でエラーになるので、試しに追加
+(remove-hook 'rspec-mode-hook 'rspec-set-imenu-generic-expression)
 
 ;; autotest
 (require 'autotest)
