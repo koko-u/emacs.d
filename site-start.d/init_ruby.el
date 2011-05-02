@@ -99,9 +99,9 @@ and source-file directory for your debugger" t)
                (repeat . t)
                (modes . '(ruby-mode))))
 
-;(setq rsense-home "/usr/local/lib/rsense")
-;(add-to-list 'load-path (concat rsense-home "/etc"))
-;(require 'rsense)
+(setq rsense-home (getenv "RSENSE_HOME") )
+(add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
 
 ;; C-c . でメソッドなどを補完
 ;(add-hook 'ruby-mode-hook
