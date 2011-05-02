@@ -30,7 +30,7 @@
 ;; デフォルトのフレーム設定
 (setq default-frame-alist
       (append (list
-               '(width . 65)
+               '(width . 120)
                '(height . 40)
                '(top . 10)
                '(left . 10)
