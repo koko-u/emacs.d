@@ -129,6 +129,9 @@
 ;; scala-mode
 (require 'init_scala)
 
+;; coffee-mode
+(require 'init_coffee)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
