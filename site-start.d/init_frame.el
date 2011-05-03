@@ -34,6 +34,7 @@
                '(height . 40)
                '(top . 10)
                '(left . 10)
+               '(font . "ricty-12")
                )
               default-frame-alist))
 
