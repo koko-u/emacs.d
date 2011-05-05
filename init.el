@@ -132,6 +132,9 @@
 ;; coffee-mode
 (require 'init_coffee)
 
+;; twittering-mode
+(require 'init_twit)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
