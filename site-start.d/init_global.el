@@ -124,6 +124,10 @@
 ;; 終了時に聞く
 (setq confirm-kill-emacs 'y-or-n-p)
 
+;; デフォルトブラウザを Chrome に変更
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium-browser")
+
 ;; 安全な実行のための共通系関数
 
 ;; @see http://www.sodan.org/~knagano/emacs/dotemacs.html
@@ -148,7 +152,6 @@
          (dolist (function functions)
            (autoload function file docstring interactive type))
          t )))
-
 
 (provide 'init_global)
 ;;; init_global.el ends here
