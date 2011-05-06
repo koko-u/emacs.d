@@ -30,7 +30,11 @@
       '(":home"
         ":replies"
         ":direct_messages"
-        "koko_u/ruby"))
+        "koko_u/ruby"
+        "koko_u/oreshura"
+        "koko_u/rinjin"
+        "koko_u/ore-imo"
+        ))
 (add-hook 'twittering-mode-hook
           '(lambda ()
              (twittering-icon-mode t)))
