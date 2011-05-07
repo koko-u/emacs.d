@@ -36,7 +36,7 @@
   ;; .coffee ファイルを保存するたびに .js ファイルへとコンパイルする
   (add-hook 'after-save-hook
             '(lambda ()
-               (when (string-match "\\.coffee$" (buffer-name))
+               (when (string-match "\\.coffee<.*>$" (buffer-name))
                  (coffee-compile-file)))))
 
 (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
