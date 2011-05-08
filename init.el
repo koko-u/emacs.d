@@ -84,6 +84,9 @@
 ;; フレームサイズ、色、フォントの設定
 (require 'init_frame)
 
+;; auto-insert-mode
+(require 'init_auto-insert)
+
 ;; auto-install
 (require 'init_auto-install)
 
