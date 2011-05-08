@@ -141,6 +141,9 @@
 ;; sidc-mode
 (require 'init_sdic)
 
+;; emacsclient
+(require 'init_emacs-client)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
