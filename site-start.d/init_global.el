@@ -128,6 +128,26 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium-browser")
 
+;; .el ファイルを保存した時に自動的にバイトコンパイルする
+(require 'auto-async-byte-compile)
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+
+;; 時刻を表示
+(display-time)
+
+;; ダイアログボックスを表示しない
+(setq use-dialog-box nil)
+(defalias 'message-box 'message)
+
+;; キーストロークをエコーエリアに素早く表示
+(setq echo-keystrokes 0.1)
+
+;; 大きなファイルを開く時の警告を 25M 程度とする
+(setq large-file-warning-threshold (* 25 1024 1024))
+
+;; yes を入力するのが面倒
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; 安全な実行のための共通系関数
 
 ;; @see http://www.sodan.org/~knagano/emacs/dotemacs.html
