@@ -33,8 +33,8 @@
 (autoload 'run-ruby "inf-ruby" "Run and inferior Ruby process")
 (autoload 'info-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook
-          (lambda ()
-            (inf-ruby-keys)))
+          '(lambda ()
+             (inf-ruby-keys)))
 (autoload 'rubydb "rubydb3x"
   "run rubydb on program file in buffer *gud-file*.
 the directory containing file becomes the initial working directory
@@ -69,6 +69,9 @@ and source-file directory for your debugger" t)
 (add-hook 'eruby-nxhtml-mumamo-mode-hook
           '(lambda ()
              (setq ruby-insert-encoding-magic-comment nil)))
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (setq ruby-insert-encoding-magic-comment t)))
 
 ;; setting for RSpec
 (require 'compile)
