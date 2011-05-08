@@ -138,6 +138,9 @@
 ;; twittering-mode
 (require 'init_twit)
 
+;; sidc-mode
+(require 'init_sdic)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
