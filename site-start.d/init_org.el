@@ -52,5 +52,8 @@ C-u を付けると 1レベル上、C-uC-u を付けると 1レベル下の見�
       '(("Note" ?n "** %?\n    %i\n    %a\n    %t" nil "Inbox")
         ("Todo" ?t "** TODO %?\n    %i\n    %a\n    %t" nil "Inbox")))
 
+;; 画像をインライン表示する
+(add-hook 'org-mode-hook 'turn-on-iimage-mode)
+
 (provide 'init_org)
 ;;; init_org.el ends here
