@@ -41,5 +41,10 @@
 
 (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
 
+;; shadow mode
+(require 'shadow)
+(add-hook 'find-file-hook 'shadow-on-find-file)
+
+
 (provide 'init_coffee)
 ;;; init_ac.el ends here
