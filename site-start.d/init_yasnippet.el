@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_yasnippet.el --- yasnippet
 
@@ -44,9 +44,9 @@
 ;; (setq yas/next-field-key (kbd "TAB"))
 
 ;; http://svn.coderepos.org/share/lang/elisp/anything-c-yasnippet/anything-c-yasnippet.el
-(require 'anything-c-yasnippet)
-(setq anything-c-yas-space-match-any-greedy t)
-(global-set-key (kbd "C-c y") 'anything-c-yas-complete)
+;(require 'anything-c-yasnippet)
+;(setq anything-c-yas-space-match-any-greedy t)
+;(global-set-key (kbd "C-c y") 'anything-c-yas-complete)
 
 ;; 初期化
 (yas/initialize)
@@ -54,6 +54,10 @@
 (yas/load-directory yas/root-directory)
 ;; 複数ディレクトリの場合
 ;;(mapc 'yas/load-directory yas/root-directory)
+
+;; prompting-mode の設定
+(setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt yas/completing-prompt))
+ 
 
 (provide 'init_yasnippet)
 ;;; init_yasnippet.el ends here

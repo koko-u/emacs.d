@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_global.el --- global
 
@@ -60,7 +60,7 @@
 
 ; 自動改行関連
 (setq-default auto-fill-mode nil)
-(setq-default fill-column 300)
+(setq-default fill-column 80)
 (setq text-mode-hook 'turn-off-auto-fill)
 
 ; 削除ファイルをOSのごみ箱へ
@@ -82,9 +82,12 @@
 ;; リージョンを kill-ring に入れないで削除できるようにする
 (delete-selection-mode t)
 
-;; TAB はスペース 4 個ぶんを基本
-(setq-default tab-width 4)
+;; TAB はスペース 2 個ぶんを基本
+(setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
+(add-hook 'css-mode-hook
+          '(lambda ()
+             (setq css-indent-offset 2)))
 
 ;; 対応するカッコを色表示する
 ;; 特に色をつけなくてもC-M-p、C-M-n を利用すれば対応するカッコ等に移動できる
@@ -121,6 +124,30 @@
 ;; 終了時に聞く
 (setq confirm-kill-emacs 'y-or-n-p)
 
+;; デフォルトブラウザを Chrome に変更
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium-browser")
+
+;; .el ファイルを保存した時に自動的にバイトコンパイルする
+(require 'auto-async-byte-compile)
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+
+;; 時刻を表示
+(display-time)
+
+;; ダイアログボックスを表示しない
+(setq use-dialog-box nil)
+(defalias 'message-box 'message)
+
+;; キーストロークをエコーエリアに素早く表示
+(setq echo-keystrokes 0.1)
+
+;; 大きなファイルを開く時の警告を 25M 程度とする
+(setq large-file-warning-threshold (* 25 1024 1024))
+
+;; yes を入力するのが面倒
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; 安全な実行のための共通系関数
 
 ;; @see http://www.sodan.org/~knagano/emacs/dotemacs.html
@@ -145,7 +172,6 @@
          (dolist (function functions)
            (autoload function file docstring interactive type))
          t )))
-
 
 (provide 'init_global)
 ;;; init_global.el ends here

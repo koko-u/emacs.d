@@ -1,0 +1,7 @@
+.emacs.d 配下の設定ファイル群
+
+注意:
+  ruby-mode と共に使用している rsense は JVM とコマンドのインストールが別途必要
+  yasnippet-mode は手動で設定するのが大変そうだったので apt-get で入れてしまった
+  js2.mode はバイトコンパイルしないと使えないが、buffer の中ではできずに、
+  emacs --batch --eval '(byte-compile-file "js2.el")' などとする必要がある

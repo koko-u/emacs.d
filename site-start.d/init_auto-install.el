@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_auto-install.el --- Unix Env Setting
 

@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_frame.el --- color setting file
 
@@ -30,10 +30,11 @@
 ;; デフォルトのフレーム設定
 (setq default-frame-alist
       (append (list
-               '(width . 132)
-               '(height . 32)
-               '(top . 350)
-               '(left . 160)
+               '(width . 120)
+               '(height . 40)
+               '(top . 10)
+               '(left . 10)
+               '(font . "ricty-12")
                )
               default-frame-alist))
 
@@ -42,14 +43,14 @@
 
 ;; 背景の透過
 ;; (add-to-list 'default-frame-alist '(alpha . (85 20)))
-(add-to-list 'default-frame-alist '(alpha . (92 70)))
+;(add-to-list 'default-frame-alist '(alpha . (92 70)))
 
-;;; フォントの設定
-(set-frame-font (cond
-                 (nt-p
-                  "ＭＳ ゴシック-10")
-                 (t
-                  "VL Gothic-14")))
+;;; フォントの設定 -> わかんないので保留
+;(set-frame-font (cond
+;                 (nt-p
+;                  "ＭＳ ゴシック-10")
+;                 (t
+;                  "VL Gothic-14")))
 
 ;; フォントロックの設定
 (when (fboundp 'global-font-lock-mode)
@@ -99,10 +100,10 @@
 (setq transient-mark-mode t)
 
 ;; 変更点に色付け
-(global-highlight-changes-mode t)
-(setq highlight-changes-visibility-initial-state t)
-(global-set-key (kbd "M-]") 'highlight-changes-next-change)
-(global-set-key (kbd "M-[")  'highlight-changes-previous-change)
+;(global-highlight-changes-mode t)
+;(setq highlight-changes-visibility-initial-state t)
+;(global-set-key (kbd "M-]") 'highlight-changes-next-change)
+;(global-set-key (kbd "M-[")  'highlight-changes-previous-change)
 
 ;; 現在行に色を付ける
 (global-hl-line-mode)

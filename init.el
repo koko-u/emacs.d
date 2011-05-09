@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;init.el -- Emacs init setting elisp file
 
@@ -77,10 +77,15 @@
 (require 'init_global)
 
 ;; 環境変数
-(require 'init_setenv)
+(if linux-p
+    (require 'init_setenv)
+  )
 
 ;; フレームサイズ、色、フォントの設定
 (require 'init_frame)
+
+;; auto-insert-mode
+(require 'init_auto-insert)
 
 ;; auto-install
 (require 'init_auto-install)
@@ -97,6 +102,12 @@
 ;; anything
 ;(require 'init_anything)
 
+;; auto-complete
+(require 'init_ac)
+
+;; ruby 関連
+(require 'init_ruby)
+
 ;; flymake
 (require 'init_flymake)
 
@@ -106,14 +117,37 @@
 ;; c
 (require 'init_c)
 
-;; yasnippet
-(require 'init_yasnippet)
-
 ;; javascript
 (require 'init_javascript)
 
+<<<<<<< HEAD
 ;; hatna-diary-mode
 (require 'init_hatena)
+=======
+;; uniquify
+(require 'init_uniquify)
+
+;; skk
+(require 'init_skk)
+
+;; hatena-diary-mode
+(require 'init_hatena)
+
+;; scala-mode
+(require 'init_scala)
+
+;; coffee-mode
+(require 'init_coffee)
+
+;; twittering-mode
+(require 'init_twit)
+
+;; sidc-mode
+(require 'init_sdic)
+
+;; emacsclient
+(require 'init_emacs-client)
+>>>>>>> acab97ad396568e50d5598ba67a6db9590e4a633
 
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
@@ -123,3 +157,4 @@
             (byte-recompile-directory (concat user-emacs-directory "local-lisp") 0)
             (byte-recompile-directory (concat user-emacs-directory "site-start.d") 0)
             ))
+

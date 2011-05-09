@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_setenv.el --- Unix Env Setting
 
@@ -39,6 +39,7 @@
                (expand-file-name "~/bin")
                (expand-file-name "~/local/bin")
                (expand-file-name "~/.emacs.d/bin")
+               (expand-file-name "~/.rvm/rubies/ruby-1.9.2-p136/bin")
                ))
   (when (and (file-exists-p dir) (not (member dir exec-path)))
     (setenv "PATH" (concat dir ":" (getenv "PATH")))

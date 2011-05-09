@@ -66,5 +66,9 @@ displayed in the minibuffer."
 
 ;;(define-key global-map (kbd "C-c e") 'flymake-display-err-minibuffer)
 
+;; for ruby
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
 (provide 'init_flymake)
 ;;; init_flymake.el ends here

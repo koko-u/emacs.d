@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_key.el --- key settign
 
@@ -42,12 +42,6 @@
 ;; C-m は 改行とインデントに割り当て(SKK に取られてしまうから)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 
-;; cua-mode に移行
-;;(require 'sense-region)
-
-;; CUA-mode にて矩形選択のみを有効化
-(setq cua-enable-cua-keys nil)
-(cua-mode t)
 
 ;; window の移動
 (defun other-window-or-split ()

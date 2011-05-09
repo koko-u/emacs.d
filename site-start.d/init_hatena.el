@@ -1,9 +1,11 @@
-;;; init_hatena.el --- hatena-diary-mode init file
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
+
+;;; init_hatena.el --- hatena-diary-mode
 
 ;; Copyright (C) 2011  kozaki
 
-;; Author: koko_u <kozaki.tsuneaki@gmail.com>
-;; Keywords: tools
+;; Author: koko_u <kozaki.tsuneaki@gmail.cm>
+;; Keywords: 
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,12 +22,13 @@
 
 ;;; Commentary:
 
+;; hatena-diary-mode の設定
+
 ;;; Code:
-
 (require 'hatena-diary-mode)
-
 (setq hatena-usrid "koko_u")
 (setq hatena-twitter-flag nil)
+(setq hatena-browser-function 'browse-url)
 
 (provide 'init_hatena)
 ;;; init_hatena.el ends here

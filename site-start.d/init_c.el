@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-emacs-unix; indent-tabs-mode: nil -*-
+;;; -*- mode: emacs-lisp; coding: utf-8; indent-tabs-mode: nil -*-
 
 ;;; init_c.el --- C and C++ setting
 
@@ -36,13 +36,13 @@
              ;(c-set-style "ellemtel")
              (c-set-style "cc-mode")
              ; 基本オフセット
-             ;(c-basic-offset . 4)
+             (setq c-basic-offset 2)
              ; コメント行のオフセット
              ;(c-comment-only-line-of . 0)
              ; 全自動インデントを有効
-             ;(c-auto-newline t)
+             (setq c-auto-newline t)
              ; TABキーでインデント
-             ;(c-tab-always-indent t)
+            ;(c-tab-always-indent t)
              ; namespace {}の中はインデントしない
              (c-set-offset 'innamespace 0)
              ; 連続するスペースをバックスペース一回で削除する
