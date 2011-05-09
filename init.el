@@ -120,10 +120,9 @@
 ;; javascript
 (require 'init_javascript)
 
-<<<<<<< HEAD
 ;; hatna-diary-mode
 (require 'init_hatena)
-=======
+
 ;; uniquify
 (require 'init_uniquify)
 
@@ -147,7 +146,7 @@
 
 ;; emacsclient
 (require 'init_emacs-client)
->>>>>>> acab97ad396568e50d5598ba67a6db9590e4a633
+
 
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
