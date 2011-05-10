@@ -32,6 +32,14 @@
 (autoload 'sdic-describe-word-at-point "sdic" "カーソル位置の英単語の意味を調べる" t nil)
 (global-set-key "\C-cw" 'sdic-describe-word-at-point)
 
+; 検索結果のウィンドウの高さ
+(setq sdic-window-height 10)
+
+; 検索結果のフェイス
+(setq sdic-face-style 'bold
+      sdic-face-color "firebrick4")
+
+
 ;; ----- sdicが呼ばれたときの設定
 (eval-after-load "sdic"
   '(progn
@@ -74,6 +82,15 @@
        (recenter 0))))
 
 (setq sdic-default-coding-system 'utf-8-unix)
+
+; 検索結果表示バッファで引いた単語をハイライト表示する
+(defadvice sdic-search-eiwa-dictionary (after highlight-phrase (arg))
+  (highlight-phrase arg "hi-yellow"))
+(defadvice sdic-search-waei-dictionary (after highlight-phrase (arg))
+  (highlight-phrase arg "hi-yellow"))
+
+(ad-activate 'sdic-search-eiwa-dictionary)
+(ad-activate 'sdic-search-waei-dictionary)
 
 (provide 'init_sdic)
 ;;; init_sdic.el ends here
