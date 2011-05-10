@@ -38,6 +38,9 @@
 (add-hook 'twittering-mode-hook
           '(lambda ()
              (twittering-icon-mode t)))
+(add-hook 'twittering-edit-mode-hook
+          '(lambda ()
+             (turn-off-auto-fill)))
 
 (provide 'init_twit)
 ;;; init_ac.el ends here
