@@ -56,22 +56,26 @@ and source-file directory for your debugger" t)
 (ido-mode t)
 (require 'rinari)
 
-
-;; setting for nXHTML
-(load "~/.emacs.d/lisp/nxhtml/autostart.el")
-(setq nxhtml-global-minor-mode t
-      mumamo-chunk-coloring 'submode-colored
-      nxhtml-skip-welcom t
-      rng-nxml-auto-validate-flag nil
-      nxml-degraded t)
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
-;; html.erb ファイルにはマジックコメントを入れてほしくない
-(add-hook 'eruby-nxhtml-mumamo-mode-hook
-          '(lambda ()
-             (setq ruby-insert-encoding-magic-comment nil)))
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (setq ruby-insert-encoding-magic-comment t)))
+(require 'mmm-auto)
+(setq mmm-submode-decoration-level 2)
+(set-face-background 'mmm-output-submode-face "light green")
+(set-face-background 'mmm-code-submode-face "green yellow")
+(set-face-foreground 'mmm-comment-submode-face "dark red")
+(set-face-background 'mmm-comment-submode-face "light gray")
+(mmm-add-group
+ 'fancy-html
+ '((html-erb
+    :submode ruby-mode
+    :match-face (("<%#" . mmm-comment-submode-face)
+                 ("<%=" . mmm-output-submode-face)
+                 ("<%"  . mmm-code-submode-face))
+    :front "<%[#=]?"
+    :back "%>"
+    :insert ((?% erb-code nil @ "<%" @ " " _ " " @ "%>" @)
+             (?# erb-comment nil @ "<%#" @ " " _ " " @ "%>" @)
+             (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @)))))
+(setq mmm-global-mode 'html-mode)
+(add-to-list 'mmm-mode-ext-classes-alist '(html-mode "\\.html\.erb$" fancy-html))
 
 ;; setting for RSpec
 (require 'compile)
@@ -102,8 +106,7 @@ and source-file directory for your debugger" t)
                (repeat . t)
                (modes . '(ruby-mode))))
 
-(setq rsense-home (getenv "RSENSE_HOME") )
-(add-to-list 'load-path (concat rsense-home "/etc"))
+(add-to-list 'load-path "/usr/local/share/rsense/etc")
 (require 'rsense)
 
 ;; C-c . でメソッドなどを補完
