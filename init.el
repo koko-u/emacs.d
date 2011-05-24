@@ -129,9 +129,6 @@
 ;; skk
 (require 'init_skk)
 
-;; hatena-diary-mode
-(require 'init_hatena)
-
 ;; scala-mode
 (require 'init_scala)
 
