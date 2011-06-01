@@ -40,7 +40,7 @@
              ; コメント行のオフセット
              ;(c-comment-only-line-of . 0)
              ; 全自動インデントを有効
-             (setq c-auto-newline t)
+             ;(setq c-auto-newline t)
              ; TABキーでインデント
             ;(c-tab-always-indent t)
              ; namespace {}の中はインデントしない
