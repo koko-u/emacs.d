@@ -144,6 +144,8 @@
 ;; emacsclient
 (require 'init_emacs-client)
 
+;; jdee
+(require 'init_jdee)
 
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
