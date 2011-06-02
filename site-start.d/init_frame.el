@@ -91,6 +91,7 @@
 (ad-activate 'font-lock-mode)
 
 ;; 行末の空白を表示
+(set-face-background 'trailing-whitespace "beige")
 (setq-default show-trailing-whitespace t)
 ;; EOB を表示
 (setq-default indicate-empty-lines t)
