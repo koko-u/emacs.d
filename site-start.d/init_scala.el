@@ -30,5 +30,13 @@
           (lambda ()
             (scala-electric-mode)))
 
+(defadvice scala-eval-region (after pop-after-scala-eval-region)
+  (pop-to-buffer scala-inf-buffer-name))
+(ad-activate 'scala-eval-region)
+
+(defadvice scala-eval-buffer (after pop-after-scala-eval-buffer)
+  (pop-to-buffer scala-inf-buffer-name))
+(ad-activate 'scala-eval-buffer)
+
 (provide 'init_scala)
 ;;; init_scala.el ends here
