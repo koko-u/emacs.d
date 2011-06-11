@@ -124,9 +124,11 @@
 ;; 終了時に聞く
 (setq confirm-kill-emacs 'y-or-n-p)
 
-;; デフォルトブラウザを Chrome に変更
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chromium-browser")
+;; Chrome がインストールされていれば、それをデフォルトブラウザに設定
+(if (locate-library "chromium-browser" nil exec-path)
+    (setq browse-url-browser-function 'browse-url-generic
+          browse-url-generic-program "chromium-browser")
+  (setq browse-url-browser-function 'browse-url-firefox))
 
 ;; .el ファイルを保存した時に自動的にバイトコンパイルする
 (require 'auto-async-byte-compile)
