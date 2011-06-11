@@ -40,13 +40,13 @@
 
 ;; ENSIME
 ;; you should install the pacakge from https://github.com/aemoncannon/ensime/downloads
-(require 'ensime)
+;(require 'ensime)
 
 ;; This sep causes the ensime-mode to be started whenever
 ;; scala-mode is started for a buffer. You may have to customize
 ;; this step if you're not using the standard scala-mode
-(add-hook 'scala-mode-hook
-          'ensime-scala-mode-hook)
+;(add-hook 'scala-mode-hook
+;          'ensime-scala-mode-hook)
 
 (provide 'init_scala)
 ;;; init_scala.el ends here
