@@ -147,6 +147,9 @@
 ;; jdee
 (require 'init_jdee)
 
+;; aspell
+(require 'init_flyspell)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
