@@ -30,7 +30,8 @@
 (require 'yasnippet)
 
 ;; snippet のディレクトリを設定
-(setq yas/root-directory "~/.emacs.d/etc/snippets")
+(setq yas/root-directory '("~/.emacs.d/etc/snippets"
+                           "/usr/share/emacs/site-lisp/yasnippet/snippets"))
 ;; 複数ディレクトリの場合は以下のようにする
 ;; (setq yas/root-directory '("~/.emacs.d/lisp/yasnippet-0.6.1c/snippets"
 ;;                            "~/.emacs.d/etc/snippets"))
@@ -51,9 +52,9 @@
 ;; 初期化
 (yas/initialize)
 ;; ファイルが増加すると起動に時間がかかるようになる
-(yas/load-directory yas/root-directory)
+;;(yas/load-directory yas/root-directory)
 ;; 複数ディレクトリの場合
-;;(mapc 'yas/load-directory yas/root-directory)
+(mapc 'yas/load-directory yas/root-directory)
 
 ;; prompting-mode の設定
 (setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt yas/completing-prompt))

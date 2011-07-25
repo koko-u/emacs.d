@@ -150,6 +150,12 @@
 ;; aspell
 (require 'init_flyspell)
 
+;; showoff
+(require 'init_showoff)
+
+;; popwin
+(require 'init_popwin)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
