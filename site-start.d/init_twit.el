@@ -35,6 +35,8 @@
         "koko_u/rinjin"
         "koko_u/ore-imo"
         ))
+(setq twittering-status-format
+      "%i %s(%S),  %C{%_2m月%_2d日(%a) %_2H時%_2M分}:\n%FILL[  ]{%T // from %f%L%r%R}\n ")
 (add-hook 'twittering-mode-hook
           '(lambda ()
              (twittering-icon-mode t)))
