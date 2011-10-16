@@ -30,8 +30,8 @@
 ;; デフォルトのフレーム設定
 (setq default-frame-alist
       (append (list
-               '(width . 120)
-               '(height . 40)
+               '(width . 115)
+               '(height . 35)
                '(top . 10)
                '(left . 10)
                '(font . "ricty-12")

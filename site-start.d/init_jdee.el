@@ -63,7 +63,7 @@
 
 ;; codign style
 (c-add-style "java2"
-             '((c-basic-offset . 2)
+             '((c-basic-offset . 4)
                (c-comment-only-line-offset 0 . 0)
                (c-hanging-comment-starter-p)
                (c-offsets-alist .
@@ -81,10 +81,17 @@
                                  (inher-cont . c-lineup-java-inher)
                                  (func-decl-cont . c-lineup-java-throws)
                                  ))))
+
+;; ajc-java-complete
+(require 'ajc-java-complete-config)
+
 (add-hook 'java-mode-hook
           '(lambda ()
              (setq indent-tabs-mode nil)
-             (setq c-set-style "java2")))
+             (c-set-style "java2")
+             (ajc-java-complete-mode)
+             (auto-revert-mode 1)
+             ))
 
 
 (provide 'init_jdee)
