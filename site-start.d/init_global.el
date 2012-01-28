@@ -5,7 +5,7 @@
 ;; Copyright (C) 2010  sakito
 
 ;; Author: sakito <sakito@sakito.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -149,6 +149,9 @@
 
 ;; yes を入力するのが面倒
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; 余分な行末の空白を削除する
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; 安全な実行のための共通系関数
 
