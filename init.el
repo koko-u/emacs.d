@@ -156,6 +156,12 @@
 ;; popwin
 (require 'init_popwin)
 
+;; chrome-extention
+(require 'init_chrome)
+
+;; gtag
+(require 'init_gtags)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
