@@ -162,6 +162,12 @@
 ;; gtag
 (require 'init_gtags)
 
+;; php
+;(require 'init_php)
+
+;; undo-tree
+(require 'init_undo)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
