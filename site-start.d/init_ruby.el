@@ -5,7 +5,7 @@
 ;; Copyright (C) 2010  kozaki
 
 ;; Author: koko_u <kozaki.tsuneaki@gmail.cm>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -119,5 +119,16 @@ and source-file directory for your debugger" t)
 ;            (add-to-list 'ac-sources 'ac-source-rsense-constant)))
 ;;(setq rsense-rurema-home "~/rurema")
 
+;; require しているファイルを開く
+(defun ffap-ruby-mode (name)
+  (shell-command-to-string
+   (format "ruby -e 'require %%[rubygems];require %%[devel/which];require %%[%s]; print (which_library (%%[%%s]))'" name name)))
+
+(defun find-ruby-lib (name)
+  (interactive "sRuby library name: ")
+  (find-file (ffap-ruby-mode name)))
+
+(require 'ffap)
+(add-to-list 'ffap-alist '(ruby-mode . ffap-ruby-mode))
 (provide 'init_ruby)
 ;;; init_ruby.el ends here
