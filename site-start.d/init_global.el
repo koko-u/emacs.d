@@ -97,6 +97,7 @@
 ;; 対応するカッコを色表示する
 ;; 特に色をつけなくてもC-M-p、C-M-n を利用すれば対応するカッコ等に移動できる
 (show-paren-mode t)
+(set-face-background 'show-paren-match-face "#f08080")
 ;; カッコ対応表示のスタイル
 ;; カッコその物に色が付く(デフォルト)
 ;; (setq show-paren-style 'parenthesis)
