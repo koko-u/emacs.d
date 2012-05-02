@@ -159,6 +159,24 @@
 ;; 余分な行末の空白を削除する
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; タイトルバーにファイルのフルパスを表示
+(setq frame-title-format
+      (format "%%f - Emacs@%s" (system-name)))
+
+;; ファイル名が #! で初まるファイルには実行権限を付ける
+(add-hook 'after-save-hook
+          '(lambda ()
+             (save-restriction
+               (widen)
+               (if (string= "#!" (buffer-substring 1 (min 3 (point-max))))
+                   (let ((name (buffer-file-name)))
+                     (or (char-equal ?. (string-to-char (file-name-nondirectory name)))
+                         (let ((mode (file-modes name)))
+                           (set-file-modes name (logior mode (logand (/ mode 4) 73)))
+                           (message (concat "Wrote " name " (+x)"))))
+                     )))))
+
+
 ;; 安全な実行のための共通系関数
 
 ;; @see http://www.sodan.org/~knagano/emacs/dotemacs.html
