@@ -174,6 +174,9 @@
 ;; perl-mode
 (require 'init_perl)
 
+;; powerline
+(require 'init_powerline)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
