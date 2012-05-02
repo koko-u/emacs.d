@@ -78,6 +78,11 @@
 ;; モードラインにライン数、カラム数表示
 (line-number-mode t)
 (column-number-mode t)
+;(global-linum-mode t)
+;(set-face-attribute 'linum nil
+;                    :foreground "#8e4513"
+;                    :height 1.0)
+;(setq linum-format "%4d")
 
 ;; リージョンを kill-ring に入れないで削除できるようにする
 (delete-selection-mode t)
