@@ -27,13 +27,12 @@
 
 (setq twittering-use-master-password t)
 (setq twittering-initial-timeline-spec-string
-      '(":home"
-        ":replies"
-        ":direct_messages"
+      '(
         "koko_u/ruby"
-        "koko_u/oreshura"
         "koko_u/rinjin"
-        "koko_u/ore-imo"
+        ":direct_messages"
+        ":replies"
+        ":home"
         ))
 (setq twittering-status-format
       "%i %s(%S),  %C{%_2m月%_2d日(%a) %_2H時%_2M分}:\n%FILL[  ]{%T // from %f%L%r%R}\n ")
