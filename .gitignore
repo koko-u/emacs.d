@@ -4,4 +4,4 @@
 session.*
 tramp
 var/semantic
-lisp/ensime
+lisp/ensime*
