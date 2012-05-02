@@ -5,7 +5,7 @@
 ;; Copyright (C) 2010  kozaki
 
 ;; Author: koko_u <kozaki.tsuneaki@gmail.cm>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,6 +32,9 @@
                nil
                "# -*- mode: coffee; shadow-command: \"coffee -cps\"; -*-\n"
                ))
+(add-to-list 'auto-insert-alist
+             '("\\.pl$" . "template.pl")
+               )
 
 (provide 'init_auto-insert)
 ;;; init_auto-insert.el ends here

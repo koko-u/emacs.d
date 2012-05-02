@@ -168,6 +168,12 @@
 ;; undo-tree
 (require 'init_undo)
 
+;; git-log-p
+(require 'git-log-p)
+
+;; perl-mode
+(require 'init_perl)
+
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
