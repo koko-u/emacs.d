@@ -70,5 +70,9 @@ displayed in the minibuffer."
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
+;; for java
+(require 'flymake-mvn)
+(add-hook 'java-mode-hook 'flymake-java-mvn-mode-hook)
+
 (provide 'init_flymake)
 ;;; init_flymake.el ends here
