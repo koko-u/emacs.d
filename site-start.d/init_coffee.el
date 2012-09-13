@@ -30,20 +30,20 @@
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
-(defun coffee-custom ()
-  "coffee-mode-hook"
+;; (defun coffee-custom ()
+;;   "coffee-mode-hook"
 
-  ;; .coffee ファイルを保存するたびに .js ファイルへとコンパイルする
-  (add-hook 'after-save-hook
-            '(lambda ()
-               (when (string-match "\\.coffee<.*>$" (buffer-name))
-                 (coffee-compile-file)))))
+;;   ;; .coffee ファイルを保存するたびに .js ファイルへとコンパイルする
+;;   (add-hook 'after-save-hook
+;;             '(lambda ()
+;;                (when (string-match "\\.coffee<.*>$" (buffer-name))
+;;                  (coffee-compile-file)))))
 
-(add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
+;; (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
 
-;; shadow mode
-(require 'shadow)
-(add-hook 'find-file-hook 'shadow-on-find-file)
+;;;; shadow mode
+;;(require 'shadow)
+;;(add-hook 'find-file-hook 'shadow-on-find-file)
 
 ;; flymake
 (defvar flymake-coffeescript-err-line-patterns
