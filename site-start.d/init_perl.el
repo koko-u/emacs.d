@@ -179,5 +179,8 @@
 
 (add-hook 'cperl-mode-hook 'flymake-perl-load)
 
+(require 'perl-prove)
+;(define-key cperl-mode-map (kbd "C-c p") 'perl-prove)
+
 (provide 'init_perl)
 ;;; init_perl.el ends here
