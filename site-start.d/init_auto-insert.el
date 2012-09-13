@@ -32,9 +32,11 @@
                nil
                "# -*- mode: coffee; shadow-command: \"coffee -cps\"; -*-\n"
                ))
-(add-to-list 'auto-insert-alist
-             '("\\.pl$" . "template.pl")
-               )
+(setq auto-insert-alist
+      (nconc '(
+               ("\\.pl$" . "template.pl")
+               ("\\.t$" . "template.t")
+               ) auto-insert-alist))
 
 (provide 'init_auto-insert)
 ;;; init_auto-insert.el ends here
