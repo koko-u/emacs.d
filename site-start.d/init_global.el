@@ -177,6 +177,13 @@
                            (message (concat "Wrote " name " (+x)"))))
                      )))))
 
+;; カーソル位置のシンボルをハイライト
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
+
+;; color-moccur
+(require 'color-moccur)
+(load "moccur-edit")
 
 ;; 安全な実行のための共通系関数
 
