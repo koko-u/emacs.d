@@ -40,13 +40,28 @@
 
 ;; ENSIME
 ;; you should install the pacakge from https://github.com/aemoncannon/ensime/downloads
-;(require 'ensime)
+(require 'ensime)
 
 ;; This sep causes the ensime-mode to be started whenever
 ;; scala-mode is started for a buffer. You may have to customize
 ;; this step if you're not using the standard scala-mode
-;(add-hook 'scala-mode-hook
-;          'ensime-scala-mode-hook)
+(add-hook 'scala-mode-hook
+          'ensime-scala-mode-hook)
+
+;; Semantic highlighting
+(setq ensime-sem-high-faces
+      '(
+        (var          . (:foreground "#ff2222"))
+        (val          . (:foreground "#dddddd"))
+        (varField     . (:foreground "#ff3333"))
+        (valField     . (:foreground "#dddddd"))
+        (functionCall . (:foreground "#84BEE3"))
+        (param        . (:foreground "#ffffff"))
+        (class        . font-lock-type-face)
+        (trait        . (:foreground "#084EA8"))
+        (object       . (:foreground "#026DF7"))
+        (pacakge      . font-lock-preprocessor-face)
+        ))
 
 (provide 'init_scala)
 ;;; init_scala.el ends here
