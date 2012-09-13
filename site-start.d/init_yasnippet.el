@@ -40,9 +40,9 @@
 (setq yas/use-menu nil)
 
 ;; トリガはSPC, 次の候補への移動はTAB
-(setq yas/trigger-key nil)
-;; (setq yas/trigger-key (kbd "SPC"))
-;; (setq yas/next-field-key (kbd "TAB"))
+;;(setq yas/trigger-key nil)
+(setq yas/trigger-key (kbd "SPC"))
+(setq yas/next-field-key (kbd "TAB"))
 
 ;; http://svn.coderepos.org/share/lang/elisp/anything-c-yasnippet/anything-c-yasnippet.el
 ;(require 'anything-c-yasnippet)
