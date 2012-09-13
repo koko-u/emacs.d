@@ -145,7 +145,10 @@
 (require 'init_emacs-client)
 
 ;; jdee
-(require 'init_jdee)
+;(require 'init_jdee)
+
+;; malabar-mode
+(require 'init_malabar)
 
 ;; aspell
 (require 'init_flyspell)
@@ -176,6 +179,9 @@
 
 ;; powerline
 (require 'init_powerline)
+
+;; git-now
+(require 'git-now)
 
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
