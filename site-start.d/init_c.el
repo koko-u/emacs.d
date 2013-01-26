@@ -5,7 +5,7 @@
 ;; Copyright (C) 2008  sakito
 
 ;; Author: sakito <sakito@sakito.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -36,17 +36,19 @@
              ;(c-set-style "ellemtel")
              (c-set-style "cc-mode")
              ; 基本オフセット
-             (setq c-basic-offset 2)
+             (setq c-basic-offset 4)
              ; コメント行のオフセット
              ;(c-comment-only-line-of . 0)
              ; 全自動インデントを有効
              ;(setq c-auto-newline t)
              ; TABキーでインデント
-            ;(c-tab-always-indent t)
+             ;(c-tab-always-indent t)
              ; namespace {}の中はインデントしない
              (c-set-offset 'innamespace 0)
              ; 連続するスペースをバックスペース一回で削除する
              (c-toggle-hungry-state t)
+             ; センテンスの終了である ; を入力したら自動的に改行してインデント
+             ;(c-toggle-auto-hungry-state t)
              ;; 対応する括弧の挿入 しばらく smartchr を利用してみる
              ;; (make-variable-buffer-local 'skeleton-pair)
              ;; (make-variable-buffer-local 'skeleton-pair-on-word)
@@ -61,7 +63,25 @@
              ))
 
 ;; ffapの設定
-;;(ffap-bindings)
+;(ffap-bindings)   ; これを設定すると ido-mode が死ぬので止める
+(defvar flap-alist
+  '(
+    ("\\.info\\" . ffap-info)     ; gzip info
+    ("\\`info/"  . ffap-info-2)    ; info/emacs
+    ("\\`[-a-z]+\\'" . ffap-info-3) ; (emacs) Top
+    ("\\.elc?\\'" . ffap-el)        ; simple.el simple.elc
+    (emacs-lisp-mode . ffap-el-mode)
+    (finder-mode . ffap-el-mode)
+    (help-mode . ffap-el-mode)
+    (c++-mode . ffap-c-mode)
+    (cc-mode . ffap-c-mode)
+    ("\\.\\([chCH]\\|cc\\|hh\\)\\'" . ffap-c-mode)
+    (tex-mode . ffap-tex-mode)
+    (latex-mode . ffap-latex-mode)
+    ("\\.\\(tex\\|sty\\|doc\\|cls\\)\\'" . ffap-tex)
+    ("\\`\\." . ffap-home)
+    (dired-mode . ffap-dired)
+    ))
 (setq ffap-c-path
       '("/usr/include" "/usr/local/include"))
 ;; 新規ファイルの場合には確認する
