@@ -26,12 +26,20 @@
 
 ;; flymakeを設定
 (require 'flymake)
+; 日本語ロケールではerrorとwarningが区別できないのでmake実行時は英語ロケールで
 (defun flymake-get-make-cmdline (source base-dir)
   (list "make"
-        (list "-s" "-C"
+        (list "-s"
+              "-C"
               base-dir
               (concat "CHK_SOURCES=" source)
-              "SYNTAX_CHECK_MODE=1")))
+              "SYNTAX_CHECK_MODE=1"
+              "LANG=C"
+              "check-syntax")))
+; flymakeのエラー行表示色
+(set-face-background 'flymake-errline "IndianRed1")
+(set-face-foreground 'flymake-errline "snow")
+(set-face-background 'flymake-warnline "orange3")
 
 ;; flymakeのエラー表示をミニバッファに表示
 (defun flymake-display-err-minibuffer ()
@@ -65,6 +73,11 @@ displayed in the minibuffer."
        (add-hook 'post-command-hook 'flymake-display-err-minibuffer)))
 
 ;;(define-key global-map (kbd "C-c e") 'flymake-display-err-minibuffer)
+
+;; for c++
+(defun flymake-c++-init ()
+  (flymake-mode t))
+(add-hook 'c++-mode-hook 'flymake-c++-init)
 
 ;; for ruby
 (require 'flymake-ruby)
