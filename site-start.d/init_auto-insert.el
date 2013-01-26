@@ -24,6 +24,7 @@
 
 ;;; Code:
 (require 'autoinsert)
+(require 'auto-insert-choose)
 (add-hook 'find-file-hook 'auto-insert)
 (setq auto-insert-directory (expand-file-name "~/.emacs.d/auto-insert/"))
 (setq auto-insert-query nil)
@@ -32,10 +33,19 @@
                nil
                "# -*- mode: coffee; shadow-command: \"coffee -cps\"; -*-\n"
                ))
+
+(defun select-template-file ()
+  (let* ((template-alist '(("more" . "template.more.t")
+                           ("oktest" . "template.oktest.t")))
+         (type (completing-read "Type: " template-alist nil t "more"))
+         (template-filename (concat (file-name-as-directory auto-insert-directory)
+                                    (cdr (assoc type template-alist)))))
+    (insert-file-contents template-filename)))
+
 (setq auto-insert-alist
       (nconc '(
                ("\\.pl$" . "template.pl")
-               ("\\.t$" . "template.t")
+               (("\\.t$" . "Perl test script") . select-template-file)
                ) auto-insert-alist))
 
 (provide 'init_auto-insert)
