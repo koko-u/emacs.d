@@ -42,10 +42,38 @@
                                     (cdr (assoc type template-alist)))))
     (insert-file-contents template-filename)))
 
+(defun convert-package-name (fullpath)
+  (let ((dirnames (reverse (split-string fullpath "/")))
+        (packagename "")
+        (foundlibdir nil)
+        )
+    (while (and dirnames
+                (not foundlibdir))
+      (let ((dir (car dirnames)))
+        (if (string= dir "lib")
+            (setq foundlibdir 't)
+          (setq packagename (concat dir "::" packagename))))
+      (setq dirnames (cdr dirnames))
+      )
+    (if foundlibdir
+        (replace-regexp-in-string "\.pm::$" "" packagename)
+      (read-string "Package name: "))
+    )
+  )
 (setq auto-insert-alist
       (nconc '(
                ("\\.pl$" . "template.pl")
                (("\\.t$" . "Perl test script") . select-template-file)
+               (("\\.pm$" . "Perl module")
+                nil
+                "package " (convert-package-name (buffer-file-name)) ";" n
+                ""                                                       n
+                "use warnings;"                                          n
+                "use strict;"                                            n
+                "use diagnostics;"                                       n
+                "use utf8;"                                              n
+                _                                                        n
+                "1;")
                ) auto-insert-alist))
 
 (provide 'init_auto-insert)
