@@ -154,7 +154,7 @@
 (require 'init_flyspell)
 
 ;; showoff
-(require 'init_showoff)
+;(require 'init_showoff)
 
 ;; popwin
 (require 'init_popwin)
