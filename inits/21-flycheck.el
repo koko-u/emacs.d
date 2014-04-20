@@ -7,3 +7,8 @@
 
 (require 'flycheck-tip)
 
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-clang-language-standard "c++11")
+    '(flycheck-clang-include-path "/usr/include/c++/v1")
+    ))
