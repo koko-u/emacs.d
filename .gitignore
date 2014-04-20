@@ -8,3 +8,4 @@ lisp/ensime*
 elpa/
 srecode-map.el
 ac-comphist.dat
+url/
