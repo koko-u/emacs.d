@@ -6,3 +6,4 @@ tramp
 var/semantic
 lisp/ensime*
 elpa/
+srecode-map.el
