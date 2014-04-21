@@ -1,7 +1,7 @@
 (require 'google-translate)
 (require 'google-translate-smooth-ui)
-(global-set-key (kbd "C-c t") 'google-translate-smooth-translate)
-(setq google-translate-translation-direction-alist
+(global-set-key "\C-ct" 'google-translate-smooth-translate)
+(setq google-translate-translation-directions-alist
       '(("en" . "ja")
         ("ja" . "en")))
 (setq google-translate-input-method-auto-toggling t)
