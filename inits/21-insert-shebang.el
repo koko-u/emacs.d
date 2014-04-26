@@ -25,6 +25,8 @@
 ;;; Code:
 
 (require 'insert-shebang)
+(add-to-list 'insert-shebang-file-types
+             '("rb" . "ruby"))
 (add-hook 'find-file-hook 'insert-shebang)
 
 ;; ファイル名が #! で初まるファイルには実行権限を付ける
