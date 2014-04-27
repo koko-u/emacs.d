@@ -1,4 +1,4 @@
-;;; 20-package.el --- melpa
+;;; 21-visual-regexp.el --- visual regexp
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,10 +24,10 @@
 
 ;;; Code:
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
+(eval-after-load "visual-regexp"
+  '(progn
+     (define-key global-map (kbd "C-c r") 'vr/replace)
+     (define-key global-map (kbd "C-c q") 'vr/query-replace)))
 
-(provide '20-package)
-;;; 20-package.el ends here
+(provide '21-visual-regexp)
+;;; 21-visual-regexp.el ends here

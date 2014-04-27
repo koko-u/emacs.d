@@ -23,32 +23,27 @@
 ;;
 
 ;;; Code:
-;; snippet のディレクトリを設定
-(setq yas-snippet-dirs '("~/.emacs.d/elpa/yasnippet-20140314.255/snippets"
-                         "~/.emacs.d/etc/snippets"))
 
-;; 複数ディレクトリの場合は以下のようにする
-;; (setq yas/root-directory '("~/.emacs.d/lisp/yasnippet-0.6.1c/snippets"
-;;                            "~/.emacs.d/etc/snippets"))
+(eval-after-load "yasnippet"
+  '(progn
+     ;; snippet のディレクトリを設定
+     (setq yas-snippet-dirs '("~/.emacs.d/elpa/yasnippet-20140314.255/snippets"
+                              "~/.emacs.d/etc/snippets"))
 
-;; メニューは使わない
-(setq yas-use-menu nil)
+     ;; 常に利用する
+     (yas-global-mode 1)
 
-;; トリガはSPC, 次の候補への移動はTAB
-;;(setq yas/trigger-key nil)
-(setq yas/trigger-key (kbd "SPC"))
-(setq yas/next-field-key (kbd "TAB"))
+     ;; メニューは使わない
+     (setq yas-use-menu nil)
 
-;; 初期化
+     ;; ファイルが増加すると起動に時間がかかるようになる
+     ;;(yas/load-directory yas/root-directory)
+     ;; 複数ディレクトリの場合
+     (mapc 'yas-load-directory yas-snippet-dirs)
 
-;; ファイルが増加すると起動に時間がかかるようになる
-;;(yas/load-directory yas/root-directory)
-;; 複数ディレクトリの場合
-(mapc 'yas/load-directory yas-snippet-dirs)
-
-;; prompting-mode の設定
-(setq yas/prompt-functions
-      '(yas/completing-prompt yas/dropdown-prompt))
+     ;; prompting-mode の設定
+     (setq yas-prompt-functions
+           '(yas-completing-prompt yas-dropdown-prompt))))
 
 (provide '21-yasnippet)
 ;;; 21-yasnippet.el ends here

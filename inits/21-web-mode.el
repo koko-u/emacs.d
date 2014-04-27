@@ -1,4 +1,4 @@
-;;; 20-package.el --- melpa
+;;; 21-web-mode.el --- web-mode
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,10 +24,15 @@
 
 ;;; Code:
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-(provide '20-package)
-;;; 20-package.el ends here
+(add-hook 'web-mode-hook
+          '(lambda ()
+             (setq web-mode-html-offset   2
+                   web-mode-css-offset    2
+                   web-mode-script-offset 2)))
+
+(provide '21-web-mode)
+;;; 21-web-mode.el ends here

@@ -1,4 +1,4 @@
-;;; 20-package.el --- melpa
+;;; 21-direx.el --- direx
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,10 +24,16 @@
 
 ;;; Code:
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
+(require 'popwin)
+(custom-set-variables
+ '(display-buffer-function 'popwin:display-buffer)
+ '(direx:leaf-icon "  ")
+ '(direx:open-icon "▾ ")
+ '(direx:closed-icon "▸ "))
 
-(provide '20-package)
-;;; 20-package.el ends here
+(push '(direx:direx-mode :position left :width 25 :dedicated t)
+      popwin:special-display-config)
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
+
+(provide '21-direx)
+;;; 21-direx.el ends here
