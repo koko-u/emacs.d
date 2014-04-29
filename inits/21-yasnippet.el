@@ -24,17 +24,38 @@
 
 ;;; Code:
 
+;; select snippet using helm
+(defun yas-helm-prompt (prompt choices &optional display-fn)
+  "Use helm to select a snippet. Put this into `yas/prompt-functions.'"
+  (interactive)
+  (setq display-fn (or display-fn 'identity))
+  (if (require 'helm-config)
+      (let (tmpsource cands result rmap)
+        (setq cands (mapcar (lambda (x) (funcall display-fn x)) choices))
+        (setq rmap (mapcar (lambda (x) (cons (funcall display-fn x) x)) choices))
+        (setq tmpsource
+              (list
+               (cons 'name prompt)
+               (cons 'candidates cands)
+               '(action . (("Expand" . (lambda (selection) selection))))
+               ))
+        (setq result (helm-other-buffer '(tmpsource) "*helm-select-yasnippet"))
+        (if (null result)
+            (signal 'quit "user quit!")
+          (cdr (assoc result rmap))))
+    nil))
+
 (eval-after-load "yasnippet"
   '(progn
      ;; snippet のディレクトリを設定
-     (setq yas-snippet-dirs '("~/.emacs.d/elpa/yasnippet-20140314.255/snippets"
+     (setq yas-snippet-dirs '("~/.emacs.d/elpa/yasnippet-20140427.1224/snippets"
                               "~/.emacs.d/etc/snippets"))
 
      ;; 常に利用する
      (yas-global-mode 1)
 
      ;; メニューは使わない
-     (setq yas-use-menu nil)
+     ;(setq yas-use-menu nil)
 
      ;; ファイルが増加すると起動に時間がかかるようになる
      ;;(yas/load-directory yas/root-directory)
@@ -43,7 +64,7 @@
 
      ;; prompting-mode の設定
      (setq yas-prompt-functions
-           '(yas-completing-prompt yas-dropdown-prompt))))
+           '(yas-helm-prompt yas-completing-prompt yas-dropdown-prompt))))
 
 (provide '21-yasnippet)
 ;;; 21-yasnippet.el ends here
