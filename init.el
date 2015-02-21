@@ -43,8 +43,6 @@
 (add-to-load-path "lisp"
                   ;; auto-install で導入された Emacs Lisp
                   "auto-install"
-                  ;; 初期設定ファイル
-                  "site-start.d"
                   ;; init-loader
                   "site-lisp"
                   )
