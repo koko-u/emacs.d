@@ -1,4 +1,4 @@
-;;; 21-magit.el --- git
+;;; 21-quickrun.el --- quickrun
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,11 +24,17 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+(push '("*quickrun*") popwin:special-display-config)
 
+(eval-after-load "quickrun"
+  '(progn
+     (quickrun-add-command "clang++/c11"
+                           '((:command . "clang++")
+                             (:exec    . ("%c %o -o %e %s"
+                                          "%e %a"))
+                             (:cmdopt . "-std=c++11 -stdlib=libc++ -Wall -Wextra -pthread")
+                             (:remove . ("%e"))
+                             :default "c++"))))
 
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '21-quickrun)
+;;; 21-quickrun.el ends here

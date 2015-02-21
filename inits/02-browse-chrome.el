@@ -1,4 +1,4 @@
-;;; 21-magit.el --- git
+;;; 02-browse-chrome.el --- browse url
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,11 +24,12 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+(custom-set-variables
+ '(browse-url-browser-function 'browse-url-generic)
+ '(browse-url-generic-program
+   (if (file-exists-p "/usr/bin/google-chrome")
+       "/usr/bin/google-chrome"
+     "/usr/bin/firefox")))
 
-
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '02-browse-chrome)
+;;; 02-browse-chrome.el ends here

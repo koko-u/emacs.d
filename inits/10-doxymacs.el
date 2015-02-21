@@ -1,6 +1,6 @@
-;;; 21-magit.el --- git
+;;; 10-doxymacs.el ---
 
-;; Copyright (C) 2014  kozaki.tsuneaki
+;; Copyright (C) 2015  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,11 +24,8 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+(custom-set-variables '(doxymacs-doxygen-style "JavaDoc"))
 
 
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '10-doxymacs)
+;;; 10-doxymacs.el ends here

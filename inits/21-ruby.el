@@ -71,7 +71,8 @@
 ;; rspec-mode
 (require 'rspec-mode)
 (custom-set-variables
- '(rspec-use-rake-flag nil))
+ '(rspec-use-rake-flag nil)
+ '(rspec-use-rake-when-possible nil))
 
 ;; narrowing compilation window
 (defun my-compilation-hook ()

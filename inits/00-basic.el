@@ -93,8 +93,6 @@
 ;; (setq scroll-margin 10)
 ;; カーソル位置を変更しない
 (setq scroll-preserve-screen-position t)
-;; shell-mode において最後の行ができるだけウィンドウの一番下にくるようにする
-(setq comint-scroll-show-maximum-output t)
 ;; C-v や M-v した時に以前の画面にあった文字を何行分残すか(初期設定 2)
 ;;(setq next-screen-context-lines 5)
 
@@ -132,7 +130,18 @@
 (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
 
 ;; 背景の透過
-;; (add-to-list 'default-frame-alist '(alpha . (85 20)))
+;; アクティブウィンドウ 92%, 非アクティブウィンドウ 40%
+(add-to-list 'default-frame-alist '(alpha . (92 40)))
+
+;; デフォルトのフレーム設定
+(setq default-frame-alist
+      (append (list
+               '(width . 120)
+               '(height . 36)
+               '(top . 20)
+               '(left . 40)
+               )
+              default-frame-alist))
 
 ;; マーク領域を色付け
 (setq transient-mark-mode t)

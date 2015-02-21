@@ -1,4 +1,4 @@
-;;; 21-magit.el --- git
+;;; 21-markdown.el --- markdown mode
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,11 +24,7 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '21-markdown)
+;;; 21-markdown.el ends here

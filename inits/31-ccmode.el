@@ -25,26 +25,29 @@
 ;;; Code:
 
 ;; スタイル設定
+;; スタイルの変え方 : http://d.hatena.ne.jp/i_s/20091026/1256557730
+;; 単純に言うと、C-c C-s でインデントの方式を知って、C-c C-o で試してみてよさげ
+;; なら (c-set-offset ... )に書く
 (add-hook 'c-mode-common-hook
           '(lambda ()
-                                        ; styleには GNU,cc-mode,ktr,bsd,stroustrup,whitesmith
-                                        ; ,ellemtel,linux等がある
-                                        ;(c-set-style "ellemtel")
-             (c-set-style "cc-mode")
-                                        ; 基本オフセット
+             ; styleには GNU,cc-mode,ktr,bsd,stroustrup,whitesmith,ellemtel,linux等がある
+             (c-set-style "stroustrup")
+             ; 基本オフセット
              (setq c-basic-offset 4)
-                                        ; コメント行のオフセット
-                                        ;(c-comment-only-line-of . 0)
-                                        ; 全自動インデントを有効
-                                        ;(c-toggle-auto-newline t)
-                                        ; TABキーでインデント
+             ; コメント行のオフセット
+             ;(c-comment-only-line-of . 0)
+             ; 全自動インデントを有効
+             ;(c-toggle-auto-newline t)
+             ; TABキーでインデント
              (setq c-tab-always-indent t)
-                                        ; namespace {}の中はインデントしない
+             ; namespace {}の中はインデントしない
              (c-set-offset 'innamespace 0)
-                                        ; 連続するスペースをバックスペース一回で削除する
+             ; クラス内のインライン関数の開き括弧
+             (c-set-offset 'inline-open 0)
+             ; 連続するスペースをバックスペース一回で削除する
              (c-toggle-hungry-state t)
-                                        ; センテンスの終了である ; を入力したら自動的に改行してインデント
-                                        ;(c-toggle-auto-hungry-state t)
+             ; センテンスの終了である ; を入力したら自動的に改行してインデント
+             ;(c-toggle-auto-hungry-state t)
              ;; 対応する括弧の挿入 しばらく smartchr を利用してみる
              ;; (make-variable-buffer-local 'skeleton-pair)
              ;; (make-variable-buffer-local 'skeleton-pair-on-word)
@@ -82,6 +85,14 @@
                                                      plain-tex-mode))
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
+
+;; Doxymacs
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+(defun my-doxymacs-font-lock-hook ()
+  (if (or (eq major-mode 'c-mode)
+          (eq major-mode 'c++-mode))
+      (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
 (provide '31-ccmode)
 ;;; 31-ccmode.el ends here

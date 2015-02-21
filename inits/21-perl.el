@@ -1,9 +1,9 @@
-;;; 21-magit.el --- git
+;;; 21-perl.el ---
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
-;; Keywords:
+;; Keywords: abbrev
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,11 +24,10 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+;;; cperl-mode is preferred to perl-mode
+;;; "Brevity is the soul of wit" <foo at acm.org>
+(defalias 'perl-mode 'cperl-mode)
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 
-
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '21-perl)
+;;; 21-perl.el ends here

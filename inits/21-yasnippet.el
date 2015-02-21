@@ -48,8 +48,9 @@
 (eval-after-load "yasnippet"
   '(progn
      ;; snippet のディレクトリを設定
-     (setq yas-snippet-dirs '("~/.emacs.d/elpa/yasnippet-20140427.1224/snippets"
-                              "~/.emacs.d/etc/snippets"))
+     (setq yas-snippet-dirs 
+	   (cons "~/.emacs.d/etc/snippets"
+		 (file-expand-wildcards "~/.emacs.d/elpa/yasnippet-*/snippets")))
 
      ;; 常に利用する
      (yas-global-mode 1)

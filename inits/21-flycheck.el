@@ -34,7 +34,7 @@
 (eval-after-load 'flycheck
   '(custom-set-variables
     '(flycheck-clang-language-standard "c++11")
-    '(flycheck-clang-include-path '("/usr/include/c++/v1"))
+    '(flycheck-clang-include-path '("/usr/include/c++/v1" "./include" "../include"))
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)
     '(flycheck-pos-tip-timeout 10)
     ))

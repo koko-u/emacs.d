@@ -1,6 +1,6 @@
-;;; 21-magit.el --- git
+;;; 21-dummy-h-mode.el ---
 
-;; Copyright (C) 2014  kozaki.tsuneaki
+;; Copyright (C) 2015  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,11 +24,8 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+(add-to-list 'auto-mode-alist '("\\.h$" . dummy-h-mode))
+(autoload 'dummy-h-mode "dummy-h-mode" "Dummy H mode" t)
 
-
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '21-dummy-h-mode)
+;;; 21-dummy-h-mode.el ends here

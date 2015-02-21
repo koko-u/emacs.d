@@ -26,6 +26,7 @@
 
 (eval-after-load "twittering-mode"
   '(progn
+     (setq twittering-use-master-password t)
      (setq twittering-initial-timeline-spec-string
            '(
              ":home"

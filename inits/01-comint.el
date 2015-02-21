@@ -1,4 +1,4 @@
-;;; 21-magit.el --- git
+;;; 01-comint.el --- comint-mode
 
 ;; Copyright (C) 2014  kozaki.tsuneaki
 
@@ -24,11 +24,10 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+;; shell-mode において最後の行ができるだけウィンドウの一番下にくるようにする
+(custom-set-variables
+ '(comint-scroll-show-maximum-output t))
 
 
-(provide '21-magit)
-;;; 21-magit.el ends here
+(provide '01-comint)
+;;; 01-comint.el ends here
