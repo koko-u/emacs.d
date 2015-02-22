@@ -197,7 +197,6 @@
                                         (concat user-emacs-directory "init.elc"))
                 (byte-compile-file (concat user-emacs-directory "init.el")))
             (byte-recompile-directory (concat user-emacs-directory "site-lisp") 0)
-            (byte-recompile-directory (concat user-emacs-directory "site-start.d") 0)
             ))
 
 (provide 'init)
