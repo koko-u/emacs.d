@@ -1,6 +1,6 @@
-;;; 01-emacsclient.el --- emacsclient setting
+;;; 00-font.el ---                       -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2014  kozaki.tsuneaki
+;; Copyright (C) 2015  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,23 +24,14 @@
 
 ;;; Code:
 
-;; emacsclient
-(require 'server)
-;; windows の場合に /tmp/emacs400 が unsafe だって文句を言われるのを黙らす
-(when (and (>= emacs-major-version 23)
-           (equal window-system 'w32))
-  (defun server-ensure-safe-dir (dir) "Noop" t))
+(set-face-attribute 'default nil :family "Ricty" :height 140)
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0208
+                  (font-spec :family "Ricty"))
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0212
+                  (font-spec :family "Ricty"))
+;;(add-to-list 'face-font-rescale-alist '("Ricty.*" . 1.2))
 
-(unless (server-running-p)
-  (server-start))
-
-;(defun iconify-emacs-when-server-is-done ()
-;  (unless server-clients (iconify-frame)))
-
-;(add-hook 'server-done-hook 'iconify-emacs-when-server-is-done)
-(global-set-key (kbd "C-x C-c") 'server-edit)
-(defalias 'exit 'save-buffers-kill-emacs)
-
-
-(provide '01-emacsclient)
-;;; 01-emacsclient.el ends here
+(provide '00-font)
+;;; windows-enviornment.el ends here
