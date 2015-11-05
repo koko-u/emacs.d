@@ -24,10 +24,24 @@
 
 ;;; Code:
 
-(add-hook 'magit-mode-hook
-          '(lambda ()
-             (add-hook 'git-commit-mode-hook 'turn-off-auto-fill)
-             (magit-push-remote-mode 1)))
+;; コミットメッセージを書いて C-c C-c した時のWindows構成の不安定さを軽減
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+(defun my/magit-quit-session ()
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
+
+(define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
+
+(defadvice git-commit-commit (after move-to-magit-buffer activate)
+  (delete-window))
+
+;; 72 文字折り返しをオミット
+(add-hook 'git-commit-mode-hook (setq auto-fill-mode nil))
 
 
 (provide '21-magit)
