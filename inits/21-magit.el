@@ -43,6 +43,7 @@
 ;; 72 文字折り返しをオミット
 (add-hook 'git-commit-mode-hook (setq auto-fill-mode nil))
 
+(global-set-key (kbd "C-c g") 'magit-status)
 
 (provide '21-magit)
 ;;; 21-magit.el ends here
