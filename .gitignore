@@ -5,3 +5,11 @@ session.*
 tramp
 var/semantic
 lisp/ensime*
+elpa/
+srecode-map.el
+ac-comphist.dat
+url/
+cider-history
+network-security.data
+recentf
+skk-get-jisyo/

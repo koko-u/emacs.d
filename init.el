@@ -2,9 +2,9 @@
 
 ;;init.el -- Emacs init setting elisp file
 
-;; Copyright (C) 2010  sakito
+;; Copyright (C) 2014 KOZAKI
 
-;; Author: sakito <sakito@sakito.com>
+;; Author: KOZAKI Tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords: tools
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,13 @@
 
 ;;; Code:
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq user-full-name "kozaki.tsuneaki")
 (setq user-mail-address "kozaki.tsuneaki@gmail.com")
 
@@ -41,154 +48,200 @@
 
 ;; Emacs Lisp のPathを通す
 (add-to-load-path "lisp"
-                  ;; 変更したり、自作の Emacs Lisp
-                  "local-lisp"
                   ;; auto-install で導入された Emacs Lisp
                   "auto-install"
-                  ;; 初期設定ファイル
-                  "site-start.d")
+                  ;; init-loader
+                  "site-lisp"
+                  )
 
-;; Emacs の種類バージョンを判別するための変数を定義
-;; @see http://github.com/elim/dotemacs/blob/master/init.el
-(defun x->bool (elt) (not (not elt)))
-(defvar emacs23-p (equal emacs-major-version 23))
-(defvar ns-p (featurep 'ns))
-(defvar linux-p (eq system-type 'gnu/linux))
-(defvar nt-p (eq system-type 'windows-nt))
+;; init-loader
+;; (let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
+;;       (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+;;           (normal-top-level-add-subdirs-to-load-path)))
+;; (require 'init-loader)
+;; (setq init-loader-show-log-after-init nil)
+;; (init-loader-load "~/.emacs.d/inits")
+(require 'init-loader)
+(setq init-loader-show-log-after-init 'error-only)
+(init-loader-load "~/.emacs.d/inits")
 
-
-;; 文字コード
-;;(set-language-environment 'Japanese)
-(set-language-environment  'utf-8)
-(prefer-coding-system 'utf-8)
-
-(cond
- (nt-p
-  (set-default-coding-systems 'utf-8-dos)
-  (setq file-name-coding-system 'sjis
-        locale-coding-system 'utf-8))
- (t
-  (set-default-coding-systems 'utf-8-unix)
-  (setq file-name-coding-system 'utf-8
-        locale-coding-system 'utf-8)))
+;; ;; Emacs の種類バージョンを判別するための変数を定義
+;; ;; @see http://github.com/elim/dotemacs/blob/master/init.el
+;; (defun x->bool (elt) (not (not elt)))
+;; (defvar emacs23-p (equal emacs-major-version 23))
+;; (defvar ns-p (featurep 'ns))
+;; (defvar linux-p (eq system-type 'gnu/linux))
+;; (defvar nt-p (eq system-type 'windows-nt))
 
 
-;; 全環境共通設定
-(require 'init_global)
+;; ;; 文字コード
+;; ;;(set-language-environment 'Japanese)
+;; (set-language-environment  'utf-8)
+;; (prefer-coding-system 'utf-8)
 
-;; 環境変数
-(if linux-p
-    (require 'init_setenv)
-  )
+;; (cond
+;;  (nt-p
+;;   (set-default-coding-systems 'utf-8-dos)
+;;   (setq file-name-coding-system 'sjis
+;;         locale-coding-system 'utf-8))
+;;  (t
+;;   (set-default-coding-systems 'utf-8-unix)
+;;   (setq file-name-coding-system 'utf-8
+;;         locale-coding-system 'utf-8)))
 
-;; フレームサイズ、色、フォントの設定
-(require 'init_frame)
 
-;; auto-insert-mode
-(require 'init_auto-insert)
+;; ;; 全環境共通設定
+;; (require 'init_global)
 
-;; auto-install
-(require 'init_auto-install)
+;; ;; 環境変数
+;; (if linux-p
+;;     (require 'init_setenv)
+;;   )
 
-;; shell, eshell 関連
-(require 'init_shell)
+;; ;; フレームサイズ、色、フォントの設定
+;; (require 'init_frame)
 
-;; Lisp
-(require 'init_lisp)
+;; ;; auto-insert-mode
+;; (require 'init_auto-insert)
 
-;; キー設定
-(require 'init_key)
+;; ;; auto-install
+;; (require 'init_auto-install)
 
-;; anything
-;(require 'init_anything)
+;; ;; shell, eshell 関連
+;; (require 'init_shell)
 
-;; auto-complete
-(require 'init_ac)
+;; ;; Lisp
+;; (require 'init_lisp)
 
-;; ruby 関連
-(require 'init_ruby)
+;; ;; キー設定
+;; (require 'init_key)
 
-;; flymake
-(require 'init_flymake)
+;; ;; anything
+;; ;(require 'init_anything)
 
-;; diff
-(require 'init_diff)
+;; ;; auto-complete
+;; (require 'init_ac)
 
-;; c
-(require 'init_c)
+;; ;; ruby 関連
+;; (require 'init_ruby)
 
-;; javascript
-(require 'init_javascript)
+;; ;; flymake
+;; (require 'init_flymake)
 
-;; hatna-diary-mode
-(require 'init_hatena)
+;; ;; diff
+;; (require 'init_diff)
 
-;; uniquify
-(require 'init_uniquify)
+;; ;; c
+;; (require 'init_c)
 
-;; skk
-(require 'init_skk)
+;; ;; javascript
+;; (require 'init_javascript)
 
-;; scala-mode
-(require 'init_scala)
+;; ;; hatna-diary-mode
+;; (require 'init_hatena)
 
-;; coffee-mode
-(require 'init_coffee)
+;; ;; uniquify
+;; (require 'init_uniquify)
 
-;; twittering-mode
-(require 'init_twit)
+;; ;; skk
+;; (require 'init_skk)
 
-;; sidc-mode
-(require 'init_sdic)
+;; ;; scala-mode
+;; (require 'init_scala)
 
-;; emacsclient
-(require 'init_emacs-client)
+;; ;; coffee-mode
+;; (require 'init_coffee)
 
-;; jdee
-;(require 'init_jdee)
+;; ;; twittering-mode
+;; (require 'init_twit)
 
-;; malabar-mode
-(require 'init_malabar)
+;; ;; sidc-mode
+;; (require 'init_sdic)
 
-;; aspell
-(require 'init_flyspell)
+;; ;; emacsclient
+;; (require 'init_emacs-client)
 
-;; showoff
-;(require 'init_showoff)
+;; ;; jdee
+;; ;(require 'init_jdee)
 
-;; popwin
-(require 'init_popwin)
+;; ;; malabar-mode
+;; (require 'init_malabar)
 
-;; chrome-extention
-(require 'init_chrome)
+;; ;; aspell
+;; (require 'init_flyspell)
 
-;; gtag
-(require 'init_gtags)
+;; ;; showoff
+;; ;(require 'init_showoff)
 
-;; php
-;(require 'init_php)
+;; ;; popwin
+;; (require 'init_popwin)
 
-;; undo-tree
-(require 'init_undo)
+;; ;; chrome-extention
+;; (require 'init_chrome)
 
-;; git-log-p
-(require 'git-log-p)
+;; ;; gtag
+;; (require 'init_gtags)
 
-;; perl-mode
-(require 'init_perl)
+;; ;; php
+;; ;(require 'init_php)
 
-;; powerline
-(require 'init_powerline)
+;; ;; undo-tree
+;; (require 'init_undo)
 
-;; git-now
-(require 'git-now)
+;; ;; git-log-p
+;; (require 'git-log-p)
+
+;; ;; perl-mode
+;; (require 'init_perl)
+
+;; ;; powerline
+;; (require 'init_powerline)
+
+;; ;; git-now
+;; (require 'git-now)
 
 ;; 終了時バイトコンパイル
 (add-hook 'kill-emacs-query-functions
           (lambda ()
-            (if (file-newer-than-file-p (concat user-emacs-directory "init.el") (concat user-emacs-directory "init.elc"))
+            (if (file-newer-than-file-p (concat user-emacs-directory "init.el")
+                                        (concat user-emacs-directory "init.elc"))
                 (byte-compile-file (concat user-emacs-directory "init.el")))
-            (byte-recompile-directory (concat user-emacs-directory "local-lisp") 0)
-            (byte-recompile-directory (concat user-emacs-directory "site-start.d") 0)
+            (byte-recompile-directory (concat user-emacs-directory "site-lisp") 0)
             ))
 
+(provide 'init)
+
+;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ag-highlight-search t)
+ '(ag-reuse-buffers (quote nil))
+ '(ag-reuse-window (quote nil))
+ '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-generic-program
+   (if
+       (file-exists-p "/usr/bin/google-chrome")
+       "/usr/bin/google-chrome" "/usr/bin/firefox"))
+ '(comint-scroll-show-maximum-output t)
+ '(direx:closed-icon "▸ ")
+ '(direx:leaf-icon "  ")
+ '(direx:open-icon "▾ ")
+ '(display-buffer-function (quote popwin:display-buffer))
+ '(flycheck-clang-include-path (quote ("/usr/include/c++/v1" "./include" "../include")))
+ '(flycheck-clang-language-standard "c++11")
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(flycheck-pos-tip-timeout 10)
+ '(helm-command-prefix-key "C-;")
+ '(inferior-js-program-command "env NODE_NO_READLINE=1 node")
+ '(package-selected-packages
+   (quote
+    (company cargo flycheck-rust racer rust-mode rainbow-delimiters paredit ac-cider cider clojure-mode clojure-mode-extra-font-locking clojure-snippets pretty-mode exec-path-from-shell haskell-mode haskell-snippets shm helm-unicode yaml-mode cobol-mode groovy-mode gradle-mode wgrep-ag visual-regexp quickrun powerline markdown-mode magit-gh-pulls magit-filenotify js2-refactor helm-helm-commands helm-gtags helm-git-files helm-git helm-flycheck helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag google-translate flycheck-pos-tip flycheck-color-mode-line dummy-h-mode direx ddskk auto-highlight-symbol auto-complete-c-headers auto-async-byte-compile all-ext ag ace-jump-mode ace-jump-buffer ac-js2 ac-c-headers))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

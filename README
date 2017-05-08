@@ -5,3 +5,66 @@
   yasnippet-mode は手動で設定するのが大変そうだったので apt-get で入れてしまった
   js2.mode はバイトコンパイルしないと使えないが、buffer の中ではできずに、
   emacs --batch --eval '(byte-compile-file "js2.el")' などとする必要がある
+
+インストールするパッケージ
+  package.el
+    ac-c-headers
+    ac-inf-ruby
+    ac-js2
+    ace-jump-buffer
+    ace-jump-mode
+    ag
+    auto-async-byte-compile
+    auto-complete
+    auto-complete-clang
+    auto-highlight-symbol
+    coffee-mode
+    cperl-mode
+    direx
+    dummy-h-mode
+    enh-ruby-mode
+    flex-autopair
+    flycheck
+    flycheck-color-mode-line
+    flycheck-pos-tip
+    google-translate
+    helm
+    helm-ag
+    helm-c-moccur
+    helm-c-yasnippet
+    helm-descbinds
+    helm-flycheck
+    helm-git
+    helm-git-files
+    helm-git-grep
+    helm-gtags
+    helm-helm-commands
+    helm-perldoc
+    inf-ruby
+    js2-mode
+    js2-refactor
+    magit
+    magit-filenotify
+    magit-gh-pulls
+    magit-push-remote
+    markdown-mode
+    powerline
+    quickrun
+    rspec-mode
+    ruby-block
+    ruby-compilation
+    ruby-electric
+    ruby-end
+    ruby-guard
+    ruby-interpolation
+    ruby-refactor
+    twittering-mode
+    visual-regexp
+    w3
+    web-mode
+    zencoding-mode
+
+  その他
+    popwin : https://github.com/m2ym/popwin-el
+    tempo : http://www.lysator.liu.se/~davidk/elisp/ -> ~/Emacs24.4/share/emacs/site-lisp/
+    doxymacs : http://doxymacs.sourceforge.net/
