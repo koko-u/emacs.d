@@ -31,6 +31,9 @@
 
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
 
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+
 (eval-after-load 'flycheck
   '(custom-set-variables
     '(flycheck-clang-language-standard "c++11")

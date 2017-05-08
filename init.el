@@ -24,6 +24,13 @@
 
 ;;; Code:
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq user-full-name "kozaki.tsuneaki")
 (setq user-mail-address "kozaki.tsuneaki@gmail.com")
 
@@ -48,11 +55,14 @@
                   )
 
 ;; init-loader
-(let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
-      (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-          (normal-top-level-add-subdirs-to-load-path)))
+;; (let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
+;;       (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+;;           (normal-top-level-add-subdirs-to-load-path)))
+;; (require 'init-loader)
+;; (setq init-loader-show-log-after-init nil)
+;; (init-loader-load "~/.emacs.d/inits")
 (require 'init-loader)
-(setq init-loader-show-log-after-init nil)
+(setq init-loader-show-log-after-init 'error-only)
 (init-loader-load "~/.emacs.d/inits")
 
 ;; ;; Emacs の種類バージョンを判別するための変数を定義
@@ -202,3 +212,36 @@
 (provide 'init)
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ag-highlight-search t)
+ '(ag-reuse-buffers (quote nil))
+ '(ag-reuse-window (quote nil))
+ '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-generic-program
+   (if
+       (file-exists-p "/usr/bin/google-chrome")
+       "/usr/bin/google-chrome" "/usr/bin/firefox"))
+ '(comint-scroll-show-maximum-output t)
+ '(direx:closed-icon "▸ ")
+ '(direx:leaf-icon "  ")
+ '(direx:open-icon "▾ ")
+ '(display-buffer-function (quote popwin:display-buffer))
+ '(flycheck-clang-include-path (quote ("/usr/include/c++/v1" "./include" "../include")))
+ '(flycheck-clang-language-standard "c++11")
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(flycheck-pos-tip-timeout 10)
+ '(helm-command-prefix-key "C-;")
+ '(inferior-js-program-command "env NODE_NO_READLINE=1 node")
+ '(package-selected-packages
+   (quote
+    (company cargo flycheck-rust racer rust-mode rainbow-delimiters paredit ac-cider cider clojure-mode clojure-mode-extra-font-locking clojure-snippets pretty-mode exec-path-from-shell haskell-mode haskell-snippets shm helm-unicode yaml-mode cobol-mode groovy-mode gradle-mode wgrep-ag visual-regexp quickrun powerline markdown-mode magit-gh-pulls magit-filenotify js2-refactor helm-helm-commands helm-gtags helm-git-files helm-git helm-flycheck helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag google-translate flycheck-pos-tip flycheck-color-mode-line dummy-h-mode direx ddskk auto-highlight-symbol auto-complete-c-headers auto-async-byte-compile all-ext ag ace-jump-mode ace-jump-buffer ac-js2 ac-c-headers))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -1,6 +1,6 @@
-;;; 31-doxymacs.el ---                               -*- lexical-binding: t; -*-
+;;; 21-exec-path-from-shell.el ---                   -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  kozaki.tsuneaki
+;; Copyright (C) 2017  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,14 +24,7 @@
 
 ;;; Code:
 
-;; Doxymacs
-(require 'doxymacs)
-(add-hook 'c-mode-common-hook 'doxymacs-mode)
-(defun my-doxymacs-font-lock-hook ()
-  (if (or (eq major-mode 'c-mode)
-          (eq major-mode 'c++-mode))
-      (doxymacs-font-lock)))
-(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+(exec-path-from-shell-initialize)
 
-(provide '31-doxymacs)
-;;; 31-doxymacs.el ends here
+(provide '21-exec-path-from-shell)
+;;; 21-exec-path-from-shell.el ends here

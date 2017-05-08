@@ -24,26 +24,29 @@
 
 ;;; Code:
 
-;; コミットメッセージを書いて C-c C-c した時のWindows構成の不安定さを軽減
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
+;; ;; コミットメッセージを書いて C-c C-c した時のWindows構成の不安定さを軽減
+;; (defadvice magit-status (around magit-fullscreen activate)
+;;   (window-configuration-to-register :magit-fullscreen)
+;;   ad-do-it
+;;   (delete-other-windows))
 
-(defun my/magit-quit-session ()
-  (interactive)
-  (kill-buffer)
-  (jump-to-register :magit-fullscreen))
+;; (defun my/magit-quit-session ()
+;;   (interactive)
+;;   (kill-buffer)
+;;   (jump-to-register :magit-fullscreen))
 
-(define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
+;;(define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
 
-(defadvice git-commit-commit (after move-to-magit-buffer activate)
-  (delete-window))
+;; (defadvice git-commit-commit (after move-to-magit-buffer activate)
+;;   (delete-window))
 
-;; 72 文字折り返しをオミット
-(add-hook 'git-commit-mode-hook (setq auto-fill-mode nil))
+;; ;; 72 文字折り返しをオミット
+;; (add-hook 'git-commit-mode-hook (setq auto-fill-mode nil))
 
 (global-set-key (kbd "C-c g") 'magit-status)
+
+(setq magit-display-buffer-function
+      'magit-display-buffer-same-window-except-diff-v1)
 
 (provide '21-magit)
 ;;; 21-magit.el ends here

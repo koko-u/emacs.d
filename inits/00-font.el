@@ -24,13 +24,13 @@
 
 ;;; Code:
 
-(set-face-attribute 'default nil :family "Ricty" :height 140)
+(set-face-attribute 'default nil :family "Source Han Code JP M" :height 140)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
-                  (font-spec :family "Ricty"))
+                  (font-spec :family "Source Han Code JP M"))
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0212
-                  (font-spec :family "Ricty"))
+                  (font-spec :family "Source Han Code JP M"))
 ;;(add-to-list 'face-font-rescale-alist '("Ricty.*" . 1.2))
 
 (provide '00-font)

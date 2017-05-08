@@ -1,6 +1,6 @@
-;;; 10-doxymacs.el ---
+;;; 20-popwin.el ---                                 -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  kozaki.tsuneaki
+;; Copyright (C) 2017  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,8 +24,8 @@
 
 ;;; Code:
 
-(custom-set-variables '(doxymacs-doxygen-style "JavaDoc"))
+(require 'popwin)
+(popwin-mode 1)
 
-
-(provide '10-doxymacs)
-;;; 10-doxymacs.el ends here
+(provide '20-popwin)
+;;; 20-popwin.el ends here

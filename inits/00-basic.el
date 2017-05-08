@@ -130,15 +130,15 @@
 (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
 
 ;; 背景の透過
-;; アクティブウィンドウ 92%, 非アクティブウィンドウ 40%
-(add-to-list 'default-frame-alist '(alpha . (92 40)))
+;; アクティブウィンドウ 95%, 非アクティブウィンドウ 75%
+(add-to-list 'default-frame-alist '(alpha . (95 75)))
 
 ;; デフォルトのフレーム設定
 (setq default-frame-alist
       (append (list
-               '(width . 120)
-               '(height . 36)
-               '(top . 20)
+               '(width . 100)
+               '(height . 28)
+               '(top . 40)
                '(left . 40)
                )
               default-frame-alist))

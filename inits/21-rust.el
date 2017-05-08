@@ -1,6 +1,6 @@
-;;; 21-coffee.el --- coffee mode
+;;; 21-rust.el ---                                   -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2014  kozaki.tsuneaki
+;; Copyright (C) 2017  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,11 +24,17 @@
 
 ;;; Code:
 
-(custom-set-variables
- '(coffee-tab-width 2)
- '(coffee-args-compile '("-c" "-m")))
+(defun my-rust-mode-hook ()
+  (interactive)
+  (define-key rust-mode-map (kbd "TAB") 'company-indent-or-complete-common)
+  (racer-mode)
+  (company-mode)
+  (flycheck-rust-setup)
+  (setq company-tooltip-align-annotations t)
+  (setq rust-format-on-save t))
 
-(add-hook 'coffee-after-compile-hook 'sourcemap-goto-corresponding-point)
+(add-hook 'rust-mode-hook 'my-rust-mode-hook)
+(add-hook 'racer-mode-hook 'eldoc-mode)
 
-(provide '21-coffee)
-;;; 21-coffee.el ends here
+(provide '21-rust)
+;;; 21-rust.el ends here

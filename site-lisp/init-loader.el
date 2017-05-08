@@ -2,7 +2,7 @@
 
 ;; Author: IMAKADO <ken.imakado@gmail.com>
 ;; URL: https://github.com/emacs-jp/init-loader/
-;; Version: 0.01
+;; Version: 0.02
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -68,9 +68,11 @@
 ;; then it is recompiled next time it is loaded.
 ;;
 ;; Loaded files and errors during the loading process are recorded.
-;; If `init-loader-show-log-after-init' is non-nil, the record is
-;; shown after the overall loading process.  You can do this manually
-;; by M-x init-loader-show-log.
+;; If `init-loader-show-log-after-init' is `t', the record is
+;; shown after the overall loading process. If `init-loader-show-log-after-init`
+;; is `'error-only', the record is shown only error occured.
+;; You can do this manually by M-x init-loader-show-log.
+;;
 
 ;;; Code:
 
@@ -89,55 +91,46 @@
                               "~/.emacs.d/")
                             "inits"))
   "Default directory of configuration files."
-  :type 'directory
-  :group 'init-loader)
+  :type 'directory)
 
 (defcustom init-loader-show-log-after-init t
-  "Show loading log message if this value is non-nil."
-  :type 'boolean
-  :group 'init-loader)
+  "Show loading log message if this value is t. If this value is `error-only',
+log message is shown only errors occured."
+  :type 'boolean)
 
 (defcustom init-loader-byte-compile nil
   "Byte-compile configuration files if this value is non-nil."
-  :type 'boolean
-  :group 'init-loader)
+  :type 'boolean)
 
 (defcustom init-loader-default-regexp "\\(?:\\`[[:digit:]]\\{2\\}\\)"
   "Regular expression determining valid configuration file names.
 
 The default value matches files that start with two digits.  For
 example, 00_foo.el, 01_bar.el ... 99_keybinds.el."
-  :type 'regexp
-  :group 'init-loader)
+  :type 'regexp)
 
 (defcustom init-loader-meadow-regexp "\\`meadow-"
   "Regular expression of Meadow specific configuration file names."
-  :group 'init-loader
   :type 'regexp)
 
 (defcustom init-loader-windows-regexp "\\`windows-"
   "Regular expression of Windows specific configuration file names."
-  :group 'init-loader
   :type 'regexp)
 
 (defcustom init-loader-carbon-emacs-regexp "\\`carbon-emacs-"
   "Regular expression of Carbon Emacs specific configuration file names."
-  :group 'init-loader
   :type 'regexp)
 
 (defcustom init-loader-cocoa-emacs-regexp "\\`cocoa-emacs-"
   "Regular expression of Cocoa Emacs specific configuration file names."
-  :group 'init-loader
   :type 'regexp)
 
 (defcustom init-loader-nw-regexp "\\`nw-"
   "Regular expression of no-window Emacs configuration file names."
-  :group 'init-loader
   :type 'regexp)
 
 (defcustom init-loader-linux-regexp "\\`linux-"
   "Regular expression of GNU/Linux specific configuration file names."
-  :group 'init-loader
   :type 'regexp)
 
 ;;;###autoload
@@ -160,43 +153,50 @@ example, 00_foo.el, 01_bar.el ... 99_keybinds.el."
       (init-loader-re-load init-loader-carbon-emacs-regexp init-dir)
       (setq is-carbon-emacs t))
     ;; Cocoa Emacs
-    (when (or (equal window-system 'ns)
+    (when (or (memq window-system '(ns mac))
               (and (not is-carbon-emacs) ;; for daemon mode
                    (not window-system)
                    (eq system-type 'darwin)))
       (init-loader-re-load init-loader-cocoa-emacs-regexp init-dir))
 
     ;; GNU Linux
-    (when (equal system-type 'gnu/linux)
+    (when (eq system-type 'gnu/linux)
       (init-loader-re-load init-loader-linux-regexp init-dir))
 
     ;; no-window
-    (when (null window-system)
+    (when (not window-system)
       (init-loader-re-load init-loader-nw-regexp init-dir))
 
-    (when init-loader-show-log-after-init
-      (add-hook  'after-init-hook 'init-loader-show-log))))
+    (case init-loader-show-log-after-init
+      (error-only (add-hook 'after-init-hook 'init-loader--show-log-error-only))
+      ('t (add-hook 'after-init-hook 'init-loader-show-log)))))
 
 (defun init-loader-follow-symlink (dir)
   (cond ((file-symlink-p dir)
          (expand-file-name (file-symlink-p dir)))
         (t (expand-file-name dir))))
 
-(declare-function init-loader-log "init-loader.el" (&optional s) t)
-(lexical-let (logs)
-  (defun init-loader-log (&optional s)
-    (if s (and (stringp s) (push s logs)) (mapconcat 'identity (reverse logs) "\n"))))
+(defvar init-loader--log-buffer nil)
+(defun init-loader-log (&optional msg)
+  (if msg
+      (when (stringp msg)
+        (push msg init-loader--log-buffer))
+    (mapconcat 'identity (reverse init-loader--log-buffer) "\n")))
 
-(declare-function init-loader-error-log "init-loader.el" (&optional s) t)
-(lexical-let (err-logs)
-  (defun init-loader-error-log (&optional s)
-    (if s (and (stringp s) (push s err-logs)) (mapconcat 'identity (reverse err-logs) "\n"))))
+(defvar init-loader--error-log-buffer nil)
+(defun init-loader-error-log (&optional msg)
+  (if msg
+      (when (stringp msg)
+        (push msg init-loader--error-log-buffer))
+    (mapconcat 'identity (reverse init-loader--error-log-buffer) "\n")))
 
 (defvar init-loader-before-compile-hook nil)
 (defun init-loader-load-file (file)
   (when init-loader-byte-compile
     (let* ((path (file-name-sans-extension (locate-library file)))
            (el (concat path ".el")) (elc (concat path ".elc")))
+      (when (and (not (file-exists-p el)) (file-exists-p elc))
+        (error "There is only byte-compiled file."))
       (when (or (not (file-exists-p elc))
                 (file-newer-than-file-p el elc))
         (when (file-exists-p elc) (delete-file elc))
@@ -226,6 +226,11 @@ example, 00_foo.el, 01_bar.el ... 99_keybinds.el."
                            (not (locate-library (concat el "c"))))))
         collect (file-name-nondirectory el) into ret
         finally return (if sort (sort ret 'string<) ret)))
+
+(defun init-loader--show-log-error-only ()
+  (let ((err (init-loader-error-log)))
+    (when (and err (not (string= err "")))
+      (init-loader-show-log))))
 
 ;;;###autoload
 (defun init-loader-show-log ()

@@ -26,7 +26,7 @@
 
 (global-set-key (kbd "C-x j") 'skk-mode)
 
-(setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")
+;(setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")
 (setq skk-use-azik t)
 (setq skk-azik-keyboard-type 'us)
 (setq skk-show-annotation t)

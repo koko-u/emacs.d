@@ -1,6 +1,6 @@
-;;; 21-web-mode.el --- web-mode
+;;; 10-fortune.el ---                                -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2014  kozaki.tsuneaki
+;; Copyright (C) 2017  kozaki.tsuneaki
 
 ;; Author: kozaki.tsuneaki <kozaki.tsuneaki@gmail.com>
 ;; Keywords:
@@ -24,15 +24,17 @@
 
 ;;; Code:
 
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; ;; Supply a random fortune cookie as the *scratch* message.
+;; (when (executable-find "fortune")
+;;   (setq initial-scratch-message
+;;         (with-temp-buffer
+;;           (shell-command "fortune" t)
+;;           (let ((comment-start ";;"))
+;;             (comment-region (point-min) (point-max)))
+;;           (concat (buffer-string) "\n"))))
 
-(add-hook 'web-mode-hook
-          '(lambda ()
-             (setq web-mode-html-offset   2
-                   web-mode-css-offset    2
-                   web-mode-script-offset 2)))
+(setq fortune-dir "/usr/share/games/fortunes"
+      fortune-file "/usr/share/games/fortunes/fortunes")
 
-(provide '21-web-mode)
-;;; 21-web-mode.el ends here
+(provide '10-fortune)
+;;; 10-fortune.el ends here
