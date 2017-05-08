@@ -238,7 +238,7 @@
  '(inferior-js-program-command "env NODE_NO_READLINE=1 node")
  '(package-selected-packages
    (quote
-    (company cargo flycheck-rust racer rust-mode rainbow-delimiters paredit ac-cider cider clojure-mode clojure-mode-extra-font-locking clojure-snippets pretty-mode exec-path-from-shell haskell-mode haskell-snippets shm helm-unicode yaml-mode cobol-mode groovy-mode gradle-mode wgrep-ag visual-regexp quickrun powerline markdown-mode magit-gh-pulls magit-filenotify js2-refactor helm-helm-commands helm-gtags helm-git-files helm-git helm-flycheck helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag google-translate flycheck-pos-tip flycheck-color-mode-line dummy-h-mode direx ddskk auto-highlight-symbol auto-complete-c-headers auto-async-byte-compile all-ext ag ace-jump-mode ace-jump-buffer ac-js2 ac-c-headers))))
+    (popwin company cargo flycheck-rust racer rust-mode rainbow-delimiters paredit ac-cider cider clojure-mode clojure-mode-extra-font-locking clojure-snippets pretty-mode exec-path-from-shell haskell-mode haskell-snippets shm helm-unicode yaml-mode cobol-mode groovy-mode gradle-mode wgrep-ag visual-regexp quickrun powerline markdown-mode magit-gh-pulls magit-filenotify js2-refactor helm-helm-commands helm-gtags helm-git-files helm-git helm-flycheck helm-descbinds helm-c-yasnippet helm-c-moccur helm-ag google-translate flycheck-pos-tip flycheck-color-mode-line dummy-h-mode direx ddskk auto-highlight-symbol auto-complete-c-headers auto-async-byte-compile all-ext ag ace-jump-mode ace-jump-buffer ac-js2 ac-c-headers))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

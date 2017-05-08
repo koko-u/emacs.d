@@ -27,5 +27,10 @@
 (require 'popwin)
 (popwin-mode 1)
 
+(setq special-display-function 'popwin:special-display-popup-window)
+(push '("*Help" :position right :noselect t) popwin:special-display-config)
+(push '("*auto-async-byte-compile" :height 5 :position bottom) popwin:special-display-config)
+(push '("*Racer Help*" :width 60 :position right) popwin:special-display-config)
+
 (provide '20-popwin)
 ;;; 20-popwin.el ends here

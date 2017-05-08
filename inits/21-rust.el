@@ -29,6 +29,7 @@
   (define-key rust-mode-map (kbd "TAB") 'company-indent-or-complete-common)
   (racer-mode)
   (company-mode)
+  (electric-pair-mode)
   (flycheck-rust-setup)
   (setq company-tooltip-align-annotations t)
   (setq rust-format-on-save t))
